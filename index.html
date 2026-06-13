@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<!--
+  IRONCLAD landing page — self-contained, zero external dependencies.
+
+  IMAGES — drop your product photos into img/ with these exact filenames:
+    img/hero.jpg         main hero shot (containers stacked / lifestyle)
+    img/lifestyle-1.jpg  meal-prepped fridge / weekly prep scene
+    img/lifestyle-2.jpg  oven-to-table or microwave shot
+    img/detail-lid.jpg   close-up of the airtight lid clips
+    img/detail-glass.jpg borosilicate clarity / durability shot
+    img/pack.jpg         full 10-pack flat lay
+  Missing images degrade gracefully to styled gradient panels.
+
+  REVIEWS — two quote cards in the Social Proof section are hidden.
+  Paste your real Amazon Vine review text inside them and delete the
+  `hidden` attribute to show them. Do not invent reviews.
+
+  CTA — every button points at the Amazon AU listing. If you later set up
+  Amazon Attribution, append the tag to each href.
+-->
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IRONCLAD — Borosilicate Glass Meal Prep Containers | Prep Once, Eat Well All Week</title>
+<meta name="description" content="10 oven-to-table 1040ml borosilicate glass meal prep containers with airtight leakproof lids. Oven, microwave, freezer & dishwasher safe. BPA-free. Sold on Amazon AU.">
+<meta property="og:title" content="IRONCLAD — Prep Once. Eat Well All Week.">
+<meta property="og:description" content="10 borosilicate glass meal prep containers built to outlast every plastic tub you've ever stained. On Amazon AU.">
+<meta property="og:image" content="img/hero.jpg">
+<meta property="og:type" content="website">
+<style>
+:root{
+  --navy-900:#0f172a;
+  --navy-800:#1e293b;
+  --navy-700:#334155;
+  --amber:#f59e0b;
+  --amber-light:#fbbf24;
+  --glass-blue:#7dd3fc;
+  --text:#e2e8f0;
+  --text-dim:#94a3b8;
+  --text-bright:#f8fafc;
+  --green:#34d399;
+  --red:#f87171;
+  --radius:18px;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font);
+  background:var(--navy-900);
+  color:var(--text);
+  line-height:1.65;
+  font-size:16px;
+  overflow-x:hidden;
+}
+::selection{background:var(--amber);color:var(--navy-900)}
+
+/* ---------- shared ---------- */
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+section{position:relative;padding:72px 0}
+h2{
+  font-size:clamp(1.7rem,4.5vw,2.6rem);
+  font-weight:800;
+  line-height:1.2;
+  color:var(--text-bright);
+  letter-spacing:-.02em;
+  margin-bottom:18px;
+}
+.kicker{
+  display:inline-block;
+  font-size:.78rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  color:var(--amber-light);
+  margin-bottom:14px;
+}
+.lead{font-size:1.08rem;color:var(--text-dim);max-width:640px}
+
+/* gradient text */
+.grad{
+  background:linear-gradient(100deg,var(--text-bright) 30%,var(--glass-blue) 65%,var(--amber-light));
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:transparent;
+}
+
+/* glass card */
+.card{
+  background:rgba(30,41,59,.55);
+  border:1px solid rgba(125,211,252,.14);
+  border-radius:var(--radius);
+  padding:26px;
+}
+@supports (backdrop-filter:blur(12px)){
+  .card{backdrop-filter:blur(12px);background:rgba(30,41,59,.45)}
+}
+
+/* CTA buttons */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:linear-gradient(135deg,var(--amber),var(--amber-light));
+  color:var(--navy-900);
+  font-weight:800;
+  font-size:1.05rem;
+  text-decoration:none;
+  padding:17px 34px;
+  border-radius:999px;
+  box-shadow:0 8px 30px rgba(245,158,11,.35);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 38px rgba(245,158,11,.5)}
+.btn svg{flex:none}
+.btn-sub{
+  display:block;
+  margin-top:12px;
+  font-size:.84rem;
+  color:var(--text-dim);
+}
+
+/* radial glows */
+.glow{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(90px);
+  opacity:.5;
+  pointer-events:none;
+  z-index:0;
+}
+section>.wrap{position:relative;z-index:1}
+
+/* scroll animation */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.rv.in-view{opacity:1;transform:none}
+.rv:nth-child(2){transition-delay:.08s}
+.rv:nth-child(3){transition-delay:.16s}
+.rv:nth-child(4){transition-delay:.24s}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;transition:none}
+  .btn{transition:none}
+}
+
+/* image frames w/ graceful fallback */
+.frame{
+  border-radius:var(--radius);
+  overflow:hidden;
+  background:
+    radial-gradient(120% 120% at 20% 10%,rgba(125,211,252,.25),transparent 50%),
+    radial-gradient(120% 120% at 85% 90%,rgba(245,158,11,.22),transparent 55%),
+    linear-gradient(160deg,var(--navy-800),var(--navy-900));
+  border:1px solid rgba(125,211,252,.15);
+}
+.frame img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* ---------- 1. HERO ---------- */
+.hero{
+  min-height:92svh;
+  display:flex;
+  align-items:center;
+  padding:96px 0 64px;
+}
+.hero-grid{
+  display:grid;
+  gap:44px;
+  align-items:center;
+}
+.hero h1{
+  font-size:clamp(2.5rem,7.5vw,4.3rem);
+  font-weight:900;
+  line-height:1.06;
+  letter-spacing:-.03em;
+  margin-bottom:20px;
+}
+.hero .lead{margin-bottom:32px}
+.brand{
+  font-weight:900;
+  letter-spacing:.26em;
+  font-size:.85rem;
+  color:var(--glass-blue);
+  text-transform:uppercase;
+  margin-bottom:22px;
+}
+.hero-img{aspect-ratio:4/3}
+.trust{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 22px;
+  margin-top:34px;
+  padding-top:26px;
+  border-top:1px solid rgba(125,211,252,.12);
+}
+.trust span{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:.86rem;
+  font-weight:600;
+  color:var(--text-dim);
+  white-space:nowrap;
+}
+.trust svg{color:var(--glass-blue)}
+
+/* ---------- 2. PROBLEM ---------- */
+.pain-grid{display:grid;gap:16px;margin-top:36px}
+.pain{
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
+}
+.pain .x{
+  flex:none;
+  width:34px;height:34px;
+  display:grid;place-items:center;
+  border-radius:10px;
+  background:rgba(248,113,113,.12);
+  color:var(--red);
+  font-weight:800;
+}
+.pain strong{color:var(--text-bright);display:block;margin-bottom:2px}
+.pain p{font-size:.95rem;color:var(--text-dim)}
+
+/* ---------- 3/4/5 outcome rows ---------- */
+.split{
+  display:grid;
+  gap:38px;
+  align-items:center;
+  margin-top:40px;
+}
+.split .frame{aspect-ratio:16/11}
+.steps{display:grid;gap:0;margin-top:34px}
+.step{
+  display:flex;
+  gap:18px;
+  padding:18px 0;
+  border-bottom:1px solid rgba(125,211,252,.1);
+}
+.step:last-child{border-bottom:none}
+.step .n{
+  flex:none;
+  width:38px;height:38px;
+  display:grid;place-items:center;
+  border-radius:50%;
+  background:linear-gradient(135deg,rgba(125,211,252,.2),rgba(245,158,11,.18));
+  border:1px solid rgba(125,211,252,.25);
+  font-weight:800;
+  color:var(--glass-blue);
+}
+.step strong{color:var(--text-bright)}
+.step p{font-size:.95rem;color:var(--text-dim)}
+
+/* ---------- 6. VALUE STACK ---------- */
+.stack{display:grid;gap:14px;margin-top:38px}
+.stack-item{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:18px 22px;
+}
+.stack-item .tick{
+  flex:none;
+  width:30px;height:30px;
+  display:grid;place-items:center;
+  border-radius:50%;
+  background:rgba(52,211,153,.14);
+  color:var(--green);
+  font-weight:800;
+}
+.stack-item strong{color:var(--text-bright)}
+.stack-item em{font-style:normal;color:var(--text-dim);font-size:.92rem;display:block}
+.stack-total{
+  margin-top:22px;
+  text-align:center;
+  padding:28px 22px;
+  border:1px dashed rgba(245,158,11,.45);
+  border-radius:var(--radius);
+  background:rgba(245,158,11,.06);
+}
+.stack-total .big{
+  font-size:clamp(1.6rem,5vw,2.4rem);
+  font-weight:900;
+  color:var(--amber-light);
+  letter-spacing:-.02em;
+}
+.stack-total p{color:var(--text-dim);font-size:.95rem;margin-top:6px}
+
+/* ---------- 7. COMPARISON ---------- */
+.tbl-scroll{overflow-x:auto;margin-top:36px;-webkit-overflow-scrolling:touch}
+table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  min-width:560px;
+  font-size:.93rem;
+}
+th,td{padding:14px 16px;text-align:center}
+td:first-child,th:first-child{text-align:left}
+thead th{
+  background:var(--navy-800);
+  color:var(--text-bright);
+  font-weight:700;
+  border-bottom:2px solid rgba(125,211,252,.2);
+}
+thead th.hl{
+  background:linear-gradient(135deg,rgba(245,158,11,.25),rgba(251,191,36,.15));
+  color:var(--amber-light);
+}
+tbody td{border-bottom:1px solid rgba(125,211,252,.08);color:var(--text-dim)}
+tbody td.hl{background:rgba(245,158,11,.07);color:var(--text-bright);font-weight:600}
+.yes{color:var(--green);font-weight:800}
+.no{color:var(--red);font-weight:800}
+
+/* ---------- 8. PROOF ---------- */
+.proof-grid{display:grid;gap:16px;margin-top:36px}
+.proof-stat{text-align:center;padding:30px 20px}
+.proof-stat .v{
+  font-size:1.9rem;
+  font-weight:900;
+  color:var(--glass-blue);
+  letter-spacing:-.02em;
+}
+.proof-stat p{font-size:.88rem;color:var(--text-dim);margin-top:6px}
+.quote{margin-top:16px}
+.quote blockquote{font-size:1rem;color:var(--text);font-style:italic}
+.quote cite{display:block;margin-top:12px;font-style:normal;font-size:.84rem;color:var(--text-dim)}
+
+/* ---------- 9. GUARANTEE ---------- */
+.shield{
+  display:grid;
+  gap:26px;
+  align-items:center;
+  margin-top:36px;
+}
+.shield-icon{
+  width:84px;height:84px;
+  display:grid;place-items:center;
+  border-radius:24px;
+  background:linear-gradient(135deg,rgba(52,211,153,.18),rgba(125,211,252,.14));
+  border:1px solid rgba(52,211,153,.3);
+  color:var(--green);
+  margin:0 auto;
+}
+
+/* ---------- 10. SCARCITY ---------- */
+.scarcity-band{
+  margin-top:36px;
+  padding:30px;
+  text-align:center;
+  border:1px solid rgba(245,158,11,.3);
+  background:
+    radial-gradient(80% 120% at 50% 0%,rgba(245,158,11,.12),transparent 60%),
+    rgba(30,41,59,.5);
+  border-radius:var(--radius);
+}
+.scarcity-band strong{color:var(--amber-light)}
+
+/* ---------- 11. FAQ ---------- */
+.faq{margin-top:36px;display:grid;gap:12px}
+details{
+  background:rgba(30,41,59,.55);
+  border:1px solid rgba(125,211,252,.14);
+  border-radius:14px;
+  overflow:hidden;
+}
+summary{
+  cursor:pointer;
+  list-style:none;
+  padding:18px 22px;
+  font-weight:700;
+  color:var(--text-bright);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:14px;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{
+  content:"+";
+  font-size:1.3rem;
+  color:var(--amber-light);
+  transition:transform .25s ease;
+  flex:none;
+}
+details[open] summary::after{transform:rotate(45deg)}
+details .a{padding:0 22px 20px;color:var(--text-dim);font-size:.95rem}
+
+/* ---------- 12. FINAL CTA ---------- */
+.final{
+  text-align:center;
+  padding:96px 0 120px;
+}
+.final h2{font-size:clamp(2rem,6vw,3.2rem)}
+.final .lead{margin:0 auto 36px}
+
+/* ---------- sticky mobile CTA ---------- */
+.sticky-cta{
+  position:fixed;
+  left:0;right:0;bottom:0;
+  z-index:50;
+  padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+  background:rgba(15,23,42,.92);
+  border-top:1px solid rgba(125,211,252,.18);
+  transform:translateY(110%);
+  transition:transform .35s ease;
+}
+@supports (backdrop-filter:blur(14px)){
+  .sticky-cta{backdrop-filter:blur(14px);background:rgba(15,23,42,.75)}
+}
+.sticky-cta.show{transform:none}
+.sticky-cta .btn{
+  width:100%;
+  justify-content:center;
+  padding:15px 20px;
+  font-size:1rem;
+}
+footer{
+  padding:40px 0 56px;
+  text-align:center;
+  font-size:.8rem;
+  color:var(--navy-700);
+}
+footer a{color:var(--text-dim)}
+
+/* ---------- desktop ---------- */
+@media (min-width:768px){
+  section{padding:96px 0}
+  .hero-grid{grid-template-columns:1.05fr .95fr}
+  .pain-grid{grid-template-columns:1fr 1fr}
+  .split{grid-template-columns:1fr 1fr}
+  .split.rev .frame{order:2}
+  .stack{grid-template-columns:1fr 1fr}
+  .proof-grid{grid-template-columns:repeat(3,1fr)}
+  .quote-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .shield{grid-template-columns:auto 1fr;text-align:left}
+  .shield-icon{margin:0}
+  .sticky-cta{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ 1. HERO — HORMOZI: Dream Outcome + immediate CTA ============ -->
+<section class="hero">
+  <div class="glow" style="width:520px;height:520px;background:#7dd3fc;top:-160px;right:-120px;opacity:.18"></div>
+  <div class="glow" style="width:420px;height:420px;background:#f59e0b;bottom:-140px;left:-140px;opacity:.14"></div>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="brand">IRONCLAD &middot; by Hollis</div>
+        <h1 class="grad">Prep once.<br>Eat well all week.</h1>
+        <p class="lead">10 oven-to-table <strong style="color:var(--text-bright)">borosilicate glass</strong> meal prep containers, built to outlast every plastic tub you've ever stained, warped or thrown out.</p>
+        <a class="btn" href="https://www.amazon.com.au/dp/B0G5HH4Z1F" target="_blank" rel="noopener">
+          Get IRONCLAD on Amazon AU
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <span class="btn-sub">Prime delivery &middot; Sold &amp; shipped by Amazon</span>
+        <div class="trust">
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Oven safe</span>
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Microwave safe</span>
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Freezer safe</span>
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>Dishwasher safe</span>
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>BPA-free</span>
+        </div>
+      </div>
+      <div class="frame hero-img">
+        <img src="img/hero.jpg" alt="IRONCLAD 10-pack borosilicate glass meal prep containers" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. PROBLEM AGITATION — HORMOZI: pain raises perceived value ============ -->
+<section>
+  <div class="glow" style="width:380px;height:380px;background:#f87171;top:0;left:-160px;opacity:.07"></div>
+  <div class="wrap">
+    <span class="kicker rv">The problem</span>
+    <h2 class="rv">Your plastic containers are working against you</h2>
+    <p class="lead rv">You know the drawer. Mismatched lids, orange curry stains, that smell that never washes out. Here's what plastic is actually costing you:</p>
+    <div class="pain-grid">
+      <div class="card pain rv"><span class="x">✕</span><div><strong>Permanent stains &amp; smells</strong><p>One bolognese and the container is orange forever. Plastic absorbs oils and odours — glass doesn't.</p></div></div>
+      <div class="card pain rv"><span class="x">✕</span><div><strong>Warped, leaking lids</strong><p>A few dishwasher cycles and the lid never seals again. Then it leaks in your work bag or the gym bag — once.</p></div></div>
+      <div class="card pain rv"><span class="x">✕</span><div><strong>The microwave doubt</strong><p>"Is this one microwave safe?" Heating food in degrading plastic is a question you shouldn't have to ask.</p></div></div>
+      <div class="card pain rv"><span class="x">✕</span><div><strong>Replace, replace, replace</strong><p>Cheap sets get rebought every year. The "cheap" option quietly becomes the expensive one.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. DREAM OUTCOME — HORMOZI: vivid, specific dream outcome ============ -->
+<section>
+  <div class="glow" style="width:460px;height:460px;background:#7dd3fc;top:60px;right:-180px;opacity:.12"></div>
+  <div class="wrap">
+    <span class="kicker rv">The outcome</span>
+    <h2 class="rv">One Sunday session. A week that runs itself.</h2>
+    <div class="split">
+      <div class="rv">
+        <p class="lead">Picture Sunday arvo: you cook once, portion ten meals, stack them in the fridge — and they look like a meal-prep ad. Glass shows the food, not the stains.</p>
+        <p class="lead" style="margin-top:16px">Monday to Friday you grab, heat and eat. No deciding, no takeaway runs, no $25 lunches. Your week is already sorted before it starts.</p>
+      </div>
+      <div class="frame rv"><img src="img/lifestyle-1.jpg" alt="A fridge stacked with a week of prepped meals in IRONCLAD glass containers" loading="lazy" onerror="this.style.display='none'"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. EFFORT ELIMINATED — HORMOZI: effort & sacrifice down ============ -->
+<section>
+  <div class="wrap">
+    <span class="kicker rv">Zero friction</span>
+    <h2 class="rv">One container does the whole journey</h2>
+    <div class="split rev">
+      <div class="frame rv"><img src="img/lifestyle-2.jpg" alt="IRONCLAD glass container going from oven to table" loading="lazy" onerror="this.style.display='none'"></div>
+      <div class="rv">
+        <div class="steps">
+          <div class="step"><span class="n">1</span><div><strong>Fridge or freezer</strong><p>Airtight lids lock in freshness for days, not hours.</p></div></div>
+          <div class="step"><span class="n">2</span><div><strong>Straight to oven or microwave</strong><p>Borosilicate handles real heat — remove the lid and reheat in the same dish. No transferring to a plate, no extra washing up.</p></div></div>
+          <div class="step"><span class="n">3</span><div><strong>Table</strong><p>Glass looks good enough to serve in. Because it is.</p></div></div>
+          <div class="step"><span class="n">4</span><div><strong>Dishwasher</strong><p>Top rack, done. No scrubbing stains that never come out.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. TIME COLLAPSED — HORMOZI: time delay down ============ -->
+<section style="padding:0">
+  <div class="wrap">
+    <div class="card rv" style="text-align:center;padding:36px 26px">
+      <p style="font-size:1.15rem;color:var(--text-bright);font-weight:700">Order today on Amazon AU with Prime — you're prepping <span style="color:var(--amber-light)">this Sunday</span>.</p>
+      <p style="color:var(--text-dim);font-size:.95rem;margin-top:6px">Fulfilled by Amazon. Fast, tracked delivery Australia-wide.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. VALUE STACK — HORMOZI: grand slam offer ============ -->
+<section>
+  <div class="glow" style="width:480px;height:480px;background:#f59e0b;top:80px;left:-180px;opacity:.1"></div>
+  <div class="wrap">
+    <span class="kicker rv">What you get</span>
+    <h2 class="rv">The full IRONCLAD system</h2>
+    <div class="stack">
+      <div class="card stack-item rv"><span class="tick">✓</span><div><strong>10 × 1040ml borosilicate glass containers</strong><em>Full adult meal size — not a snack tub</em></div></div>
+      <div class="card stack-item rv"><span class="tick">✓</span><div><strong>10 airtight, leakproof clip lids</strong><em>Survives the work bag, the ute, the gym bag</em></div></div>
+      <div class="card stack-item rv"><span class="tick">✓</span><div><strong>Oven-safe glass replaces small bakeware</strong><em>Cook, store and reheat in one dish (lid off in the oven)</em></div></div>
+      <div class="card stack-item rv"><span class="tick">✓</span><div><strong>Freezer-to-heat without cracking</strong><em>Borosilicate is built for thermal swings cheap glass can't take</em></div></div>
+      <div class="card stack-item rv"><span class="tick">✓</span><div><strong>Stain-proof, smell-proof, BPA-free</strong><em>Glass doesn't absorb last week's curry</em></div></div>
+      <div class="card stack-item rv"><span class="tick">✓</span><div><strong>Stackable, fridge-tidy design</strong><em>Ten meals, one shelf, zero chaos</em></div></div>
+    </div>
+    <div class="stack-total rv">
+      <div class="big">Under $6.50 per container</div>
+      <p>Less than one takeaway lunch — for a container that outlives every plastic set you've owned. Live price on Amazon.</p>
+      <a class="btn" style="margin-top:20px" href="https://www.amazon.com.au/dp/B0G5HH4Z1F" target="_blank" rel="noopener">
+        See it on Amazon AU
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. COMPARISON — HORMOZI: perceived likelihood up (spec proof) ============ -->
+<section>
+  <div class="wrap">
+    <span class="kicker rv">The difference</span>
+    <h2 class="rv">Not all "glass" is the same glass</h2>
+    <p class="lead rv">Most cheap glass containers are soda-lime glass — the same glass as a jam jar. IRONCLAD is borosilicate: the lab-grade glass made for heat.</p>
+    <div class="tbl-scroll rv">
+      <table>
+        <thead>
+          <tr><th></th><th class="hl">IRONCLAD<br>borosilicate</th><th>Cheap "glass"<br>(soda-lime)</th><th>Plastic</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Oven safe</td><td class="hl"><span class="yes">✓</span></td><td><span class="no">✕</span> risky</td><td><span class="no">✕</span></td></tr>
+          <tr><td>Freezer → heat without shattering</td><td class="hl"><span class="yes">✓</span></td><td><span class="no">✕</span> thermal shock</td><td>warps</td></tr>
+          <tr><td>Stain &amp; smell proof</td><td class="hl"><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="no">✕</span></td></tr>
+          <tr><td>Microwave without worry</td><td class="hl"><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="no">✕</span> degrades</td></tr>
+          <tr><td>Typical lifespan</td><td class="hl">Years</td><td>Months–years</td><td>Months</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. SOCIAL PROOF — HORMOZI: likelihood up (honest version) ============ -->
+<section>
+  <div class="glow" style="width:420px;height:420px;background:#7dd3fc;bottom:-120px;right:-140px;opacity:.1"></div>
+  <div class="wrap">
+    <span class="kicker rv">Proof</span>
+    <h2 class="rv">Backed by the numbers, not hype</h2>
+    <div class="proof-grid">
+      <div class="card proof-stat rv"><div class="v">Top 50</div><p>Container Sets on Amazon AU (Best Sellers Rank)</p></div>
+      <div class="card proof-stat rv"><div class="v">Amazon</div><p>Sold, stored &amp; shipped by Amazon AU (FBA)</p></div>
+      <div class="card proof-stat rv"><div class="v">Vine</div><p>Reviewed through Amazon's invite-only Vine program</p></div>
+    </div>
+    <!-- Paste real Amazon Vine review text below and remove the `hidden`
+         attribute to show these cards. DO NOT invent reviews. -->
+    <div class="quote-row">
+      <div class="card quote rv" hidden>
+        <blockquote>“PASTE REAL VINE REVIEW TEXT HERE”</blockquote>
+        <cite>— Amazon Vine reviewer, verified</cite>
+      </div>
+      <div class="card quote rv" hidden>
+        <blockquote>“PASTE REAL VINE REVIEW TEXT HERE”</blockquote>
+        <cite>— Amazon Vine reviewer, verified</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. RISK REVERSAL — HORMOZI: risk reversal (honest framing) ============ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="card shield rv">
+      <div class="shield-icon">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-3.5 8-10V5l-8-3-8 3v7c0 6.5 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+      </div>
+      <div>
+        <h2 style="font-size:1.5rem;margin-bottom:8px">Zero-risk checkout, on Amazon</h2>
+        <p style="color:var(--text-dim)">You buy through Amazon AU — full stop. That means Amazon's standard <strong style="color:var(--text-bright)">30-day return policy</strong>, Amazon's secure checkout, and delivery fulfilled from Amazon's own warehouse. If it's not for you, send it back through Amazon like anything else you've ever returned.</p>
+        <a class="btn" style="margin-top:22px" href="https://www.amazon.com.au/dp/B0G5HH4Z1F" target="_blank" rel="noopener">
+          Get IRONCLAD on Amazon AU
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10. SCARCITY — HORMOZI: urgency/scarcity (true only) ============ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="scarcity-band rv">
+      <p style="font-size:1.05rem"><strong>Small-batch importer — when a batch sells out, it's gone for 3–4 weeks.</strong></p>
+      <p style="color:var(--text-dim);font-size:.95rem;margin-top:6px">IRONCLAD ships to Australia in limited production runs. Restocks take 3–4 weeks from our factory to Amazon's warehouse. If it's in stock now, that's the best time to buy it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11. FAQ — HORMOZI: objection handling ============ -->
+<section>
+  <div class="wrap">
+    <span class="kicker rv">Questions</span>
+    <h2 class="rv">Asked before you bought</h2>
+    <div class="faq">
+      <details class="rv">
+        <summary>Can it really go from freezer to oven?</summary>
+        <div class="a">Borosilicate glass is engineered for thermal swings that crack ordinary glass. Best practice with any glassware still applies: let a frozen container sit a few minutes before it hits a hot oven, and don't put any glass under a direct grill or on a stovetop.</div>
+      </details>
+      <details class="rv">
+        <summary>Are the lids oven safe?</summary>
+        <div class="a">No — remove the lid before the oven. The glass body is oven, microwave, freezer and dishwasher safe; the airtight lids are for storage, transport and the fridge/freezer, and are BPA-free.</div>
+      </details>
+      <details class="rv">
+        <summary>Is 1040ml actually big enough for a meal?</summary>
+        <div class="a">Yes — 1040ml fits a full adult main: protein, carbs and veg. It's the size meal preppers actually use, not the snack-sized tubs most sets pad their pack count with.</div>
+      </details>
+      <details class="rv">
+        <summary>Will the lids survive the dishwasher?</summary>
+        <div class="a">Yes — lids and glass are both dishwasher safe. Top rack is recommended for the lids to keep the seals in top condition for longer.</div>
+      </details>
+      <details class="rv">
+        <summary>What if I don't like them?</summary>
+        <div class="a">You're buying on Amazon AU, so Amazon's standard 30-day return policy applies — same easy returns process as anything else you buy on Amazon.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 12. FINAL CTA — HORMOZI: close ============ -->
+<section class="final">
+  <div class="glow" style="width:560px;height:560px;background:#f59e0b;top:40px;left:50%;transform:translateX(-50%);opacity:.13"></div>
+  <div class="wrap">
+    <h2 class="grad rv">10 containers. One prep day.<br>Zero plastic regrets.</h2>
+    <p class="lead rv">Oven-to-table borosilicate glass, airtight lids, under $6.50 a container — delivered by Amazon, returnable through Amazon.</p>
+    <div class="rv">
+      <a class="btn" href="https://www.amazon.com.au/dp/B0G5HH4Z1F" target="_blank" rel="noopener">
+        Get IRONCLAD on Amazon AU
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <span class="btn-sub">Prime delivery &middot; 30-day Amazon returns</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    IRONCLAD by Hollis Enterprises &middot; Perth, Western Australia<br>
+    Sold on <a href="https://www.amazon.com.au/dp/B0G5HH4Z1F" target="_blank" rel="noopener">Amazon Australia</a>
+  </div>
+</footer>
+
+<!-- sticky mobile CTA -->
+<div class="sticky-cta" id="stickyCta">
+  <a class="btn" href="https://www.amazon.com.au/dp/B0G5HH4Z1F" target="_blank" rel="noopener">Get IRONCLAD on Amazon AU</a>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('.rv');
+  if (reduce || !('IntersectionObserver' in window)) {
+    els.forEach(function(el){ el.classList.add('in-view'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); }
+      });
+    }, {threshold: .12});
+    els.forEach(function(el){ io.observe(el); });
+  }
+  // sticky CTA appears after the hero scrolls out
+  var hero = document.querySelector('.hero');
+  var bar = document.getElementById('stickyCta');
+  if (hero && bar && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function(entries){
+      bar.classList.toggle('show', !entries[0].isIntersecting);
+    }, {threshold: 0}).observe(hero);
+  }
+})();
+</script>
+</body>
+</html>
