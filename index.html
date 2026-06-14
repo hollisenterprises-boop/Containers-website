@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>10-Pack 1040ml Glass Meal Prep Containers | Leakproof, Oven-Safe</title>
-<meta name="description" content="A whole week of meals, sealed and stacked. 10 borosilicate glass containers that go freezer to oven without a single leak, crack, or cluttered cabinet. $59.99 on Amazon AU.">
+<title>1040ml Glass Meal Prep Containers — 10-Pack | Leakproof, Oven-Safe</title>
+<meta name="description" content="A whole week of meals, sealed and stacked. Ten 1040ml borosilicate glass containers that travel from freezer to oven without a single leak, crack, or cluttered cabinet. $59.99 on Amazon AU.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ── Reset ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -16,621 +16,695 @@ a{text-decoration:none;color:inherit}
 
 /* ── Tokens ── */
 :root{
-  --ink:    #0a1514;
-  --body:   #34403f;
-  --muted:  #6a7877;
-  --bg:     #ffffff;
-  --soft:   #f3f8f7;
-  --soft2:  #e9f3f2;
-  --teal:   #128585;
-  --teal-dk:#0d6868;
-  --gold:   #e0922f;
-  --line:   #e2eae9;
-  --green:  #12855f;
-  --sans:   'Hanken Grotesk',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --bone:    #f4eee1;
+  --bone-2:  #ece3d1;
+  --paper:   #fbf7ee;
+  --ink:     #15201d;
+  --body:    #424c48;
+  --muted:   #7e857c;
+  --teal:    #0e6b61;
+  --teal-dk: #0a534b;
+  --teal-lt: #d7e6e1;
+  --clay:    #bb5a35;
+  --line:    #ddd3c0;
+  --serif:   'Fraunces',Georgia,'Times New Roman',serif;
+  --sans:    'Hanken Grotesk',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 }
 
 /* ── Base ── */
 html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
-  background:var(--bg);
+  background:var(--bone);
   color:var(--body);
   font-family:var(--sans);
   font-weight:400;
-  line-height:1.6;
-  padding-bottom:74px; /* room for sticky bar */
+  line-height:1.62;
+  padding-bottom:80px;
+  -webkit-font-smoothing:antialiased;
 }
-strong{font-weight:700;color:var(--ink)}
-.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+strong{font-weight:600;color:var(--ink)}
+.wrap{max-width:1140px;margin:0 auto;padding:0 32px}
+
+/* ── Eyebrow label ── */
+.label{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:.72rem;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--teal);
+}
+.label::before{
+  content:'';
+  width:22px;height:1px;
+  background:var(--teal);
+  opacity:.6;
+}
 
 /* ── Buttons ── */
 .btn{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  gap:10px;
+  gap:11px;
   background:var(--teal);
-  color:#fff;
-  font-weight:700;
-  font-size:1.02rem;
+  color:var(--paper);
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:1rem;
   letter-spacing:.01em;
-  padding:18px 34px;
-  border-radius:10px;
-  box-shadow:0 8px 22px rgba(18,133,133,.28);
-  transition:transform .15s,box-shadow .15s,background .15s;
-  text-align:center;
+  padding:17px 34px;
+  border-radius:3px;
+  transition:background .2s,transform .2s,box-shadow .2s;
+  box-shadow:0 10px 30px -8px rgba(14,107,97,.5);
 }
-.btn:hover{background:var(--teal-dk);transform:translateY(-2px);box-shadow:0 12px 28px rgba(18,133,133,.34)}
+.btn:hover{background:var(--teal-dk);transform:translateY(-2px);box-shadow:0 16px 36px -8px rgba(14,107,97,.55)}
 .btn:active{transform:translateY(0)}
-.btn-sub{
+.btn .arw{transition:transform .2s}
+.btn:hover .arw{transform:translateX(4px)}
+.btn-note{
   display:block;
-  font-size:.78rem;
+  font-size:.8rem;
   color:var(--muted);
-  margin-top:12px;
-  font-weight:500;
+  margin-top:14px;
+  letter-spacing:.01em;
 }
 
-/* ── 1. HERO ── */
+/* ════ HERO ════ */
 .hero{
-  background:linear-gradient(180deg,#ffffff 0%,var(--soft) 100%);
-  padding:64px 0 56px;
-  border-bottom:1px solid var(--line);
+  position:relative;
+  padding:78px 0 70px;
+  overflow:hidden;
+}
+.hero::after{
+  content:'';
+  position:absolute;
+  top:-30%;right:-10%;
+  width:60vmax;height:60vmax;
+  background:radial-gradient(circle,rgba(14,107,97,.07) 0%,transparent 60%);
+  pointer-events:none;
 }
 .hero-grid{
+  position:relative;
   display:grid;
-  grid-template-columns:1.05fr .95fr;
-  gap:56px;
+  grid-template-columns:1.06fr .94fr;
+  gap:60px;
   align-items:center;
-}
-.hero-flag{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  background:var(--soft2);
-  color:var(--teal-dk);
-  font-weight:700;
-  font-size:.74rem;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  padding:7px 14px;
-  border-radius:100px;
-  margin-bottom:22px;
 }
 .hero h1{
-  font-size:clamp(2.1rem,4.6vw,3.4rem);
-  font-weight:800;
-  line-height:1.08;
+  font-family:var(--serif);
+  font-weight:340;
+  font-size:clamp(2.6rem,5.4vw,4.5rem);
+  line-height:1.02;
   letter-spacing:-.025em;
   color:var(--ink);
-  margin-bottom:20px;
+  margin:26px 0 0;
 }
-.hero h1 .hl{color:var(--teal)}
+.hero h1 em{
+  font-style:italic;
+  font-weight:340;
+  color:var(--teal);
+}
 .hero-sub{
-  font-size:clamp(1.02rem,1.6vw,1.18rem);
+  font-size:clamp(1.05rem,1.5vw,1.22rem);
   color:var(--body);
   line-height:1.55;
-  margin-bottom:30px;
-  max-width:520px;
+  margin:24px 0 34px;
+  max-width:480px;
 }
-.hero-cta-row{display:flex;flex-direction:column;align-items:flex-start;gap:0}
+.hero-cta .btn-note{max-width:340px}
 .hero-trust{
   display:flex;
   flex-wrap:wrap;
-  align-items:center;
-  gap:8px 18px;
-  margin-top:26px;
-  padding-top:24px;
+  gap:10px 26px;
+  margin-top:34px;
+  padding-top:28px;
   border-top:1px solid var(--line);
 }
 .trust-item{
   display:inline-flex;
   align-items:center;
-  gap:7px;
-  font-size:.84rem;
+  gap:8px;
+  font-size:.85rem;
   font-weight:600;
-  color:var(--body);
+  color:var(--ink);
 }
-.trust-item svg{flex:none;width:17px;height:17px;color:var(--teal)}
-.hero-img{
-  position:relative;
-  border-radius:18px;
-  overflow:hidden;
-  box-shadow:0 24px 60px rgba(10,21,20,.16);
-  aspect-ratio:1/1;
+.trust-item svg{flex:none;width:16px;height:16px;color:var(--teal)}
+.hero-figure{position:relative}
+.hero-figure img{
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;
+  border-radius:6px;
+  box-shadow:0 40px 80px -24px rgba(21,32,29,.4);
 }
-.hero-img img{width:100%;height:100%;object-fit:cover}
-.hero-badge{
+.hero-price{
   position:absolute;
-  top:16px;right:16px;
-  background:var(--ink);
-  color:#fff;
-  font-weight:700;
-  font-size:.82rem;
-  padding:9px 15px;
-  border-radius:100px;
-  letter-spacing:.01em;
+  left:-22px;bottom:30px;
+  background:var(--paper);
+  padding:18px 24px;
+  border-radius:5px;
+  box-shadow:0 20px 44px -14px rgba(21,32,29,.34);
+  border:1px solid var(--line);
+}
+.hero-price .hp-now{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:2rem;
+  color:var(--ink);
+  line-height:1;
+}
+.hero-price .hp-meta{
+  display:block;
+  font-size:.74rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-top:6px;
 }
 
-/* ── 2. VALUE BREAKDOWN ── */
-.value{padding:72px 0 64px}
-.section-head{text-align:center;max-width:680px;margin:0 auto 48px}
-.kicker{
+/* page-load reveal */
+@keyframes riseIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.rise{opacity:0;animation:riseIn .85s cubic-bezier(.2,.7,.2,1) forwards}
+.d1{animation-delay:.05s}.d2{animation-delay:.16s}.d3{animation-delay:.27s}
+.d4{animation-delay:.38s}.d5{animation-delay:.5s}
+
+/* ════ BENEFIT ROWS (editorial) ════ */
+.benefits{padding:30px 0 20px}
+.brow{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:64px;
+  align-items:center;
+  padding:64px 0;
+  border-top:1px solid var(--line);
+}
+.brow:first-child{border-top:none}
+.brow.flip .brow-media{order:2}
+.brow-media{position:relative}
+.brow-media img{
+  width:100%;
+  aspect-ratio:5/4;
+  object-fit:cover;
+  border-radius:6px;
+  box-shadow:0 30px 60px -22px rgba(21,32,29,.3);
+}
+.brow-num{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:300;
+  font-size:1.05rem;
+  color:var(--clay);
+  letter-spacing:.04em;
+}
+.brow-text h2{
+  font-family:var(--serif);
+  font-weight:360;
+  font-size:clamp(1.85rem,3.4vw,2.85rem);
+  line-height:1.07;
+  letter-spacing:-.02em;
+  color:var(--ink);
+  margin:14px 0 16px;
+}
+.brow-text h2 em{font-style:italic;color:var(--teal)}
+.brow-text p{
+  font-size:1.04rem;
+  color:var(--body);
+  line-height:1.66;
+  max-width:430px;
+}
+.brow-tag{
   display:inline-block;
-  font-size:.76rem;
-  font-weight:700;
+  margin-top:22px;
+  font-size:.8rem;
+  font-weight:600;
+  letter-spacing:.04em;
+  color:var(--teal-dk);
+  padding-bottom:4px;
+  border-bottom:2px solid var(--teal-lt);
+}
+
+/* ════ SPEC BAND ════ */
+.specs{background:var(--ink);color:var(--paper);padding:60px 0}
+.specs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px}
+.spec{text-align:center}
+.spec-n{
+  font-family:var(--serif);
+  font-weight:340;
+  font-size:clamp(2rem,4vw,3rem);
+  line-height:1;
+  color:var(--paper);
+  letter-spacing:-.01em;
+}
+.spec-n span{font-style:italic;color:#7fc9bd;font-size:.62em}
+.spec-l{
+  font-size:.78rem;
   letter-spacing:.14em;
   text-transform:uppercase;
-  color:var(--teal);
-  margin-bottom:14px;
-}
-.section-head h2{
-  font-size:clamp(1.7rem,3.4vw,2.5rem);
-  font-weight:800;
-  line-height:1.12;
-  letter-spacing:-.02em;
-  color:var(--ink);
-}
-.value-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:22px;
-}
-.vcard{
-  background:var(--bg);
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:32px 28px;
-  transition:transform .18s,box-shadow .18s,border-color .18s;
-}
-.vcard:hover{transform:translateY(-4px);box-shadow:0 16px 38px rgba(10,21,20,.09);border-color:var(--soft2)}
-.vicon{
-  width:50px;height:50px;
-  display:flex;align-items:center;justify-content:center;
-  background:var(--soft2);
-  border-radius:12px;
-  margin-bottom:20px;
-}
-.vicon svg{width:26px;height:26px;color:var(--teal-dk)}
-.vcard h3{
-  font-size:1.16rem;
-  font-weight:700;
-  color:var(--ink);
-  letter-spacing:-.01em;
-  margin-bottom:10px;
-}
-.vcard p{font-size:.94rem;color:var(--body);line-height:1.62}
-
-/* ── SPEC STRIP (proof) ── */
-.specs{
-  background:var(--ink);
-  color:#fff;
-  padding:46px 0;
-}
-.specs-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:24px;
-  text-align:center;
-}
-.spec-num{
-  font-size:clamp(1.5rem,3vw,2.1rem);
-  font-weight:800;
-  color:#fff;
-  letter-spacing:-.02em;
-  line-height:1;
-  margin-bottom:8px;
-}
-.spec-num span{color:#4fd4d4}
-.spec-label{
-  font-size:.8rem;
-  color:rgba(255,255,255,.62);
-  font-weight:500;
-  letter-spacing:.02em;
+  color:rgba(251,247,238,.55);
+  margin-top:12px;
 }
 
-/* ── 3. OBJECTIONS ── */
-.obj{padding:72px 0;background:var(--soft)}
-.obj-list{max-width:760px;margin:40px auto 0;display:flex;flex-direction:column;gap:16px}
+/* ════ OBJECTIONS ════ */
+.obj{padding:84px 0;background:var(--bone-2)}
+.obj-head{max-width:560px;margin-bottom:46px}
+.obj-head h2{
+  font-family:var(--serif);
+  font-weight:350;
+  font-size:clamp(1.9rem,3.6vw,2.8rem);
+  line-height:1.08;
+  letter-spacing:-.02em;
+  color:var(--ink);
+  margin-top:18px;
+}
+.obj-head h2 em{font-style:italic;color:var(--teal)}
+.obj-list{display:grid;gap:0}
 .obj-item{
-  background:var(--bg);
-  border:1px solid var(--line);
-  border-radius:14px;
-  padding:26px 28px;
+  display:grid;
+  grid-template-columns:54px 1fr;
+  gap:0 24px;
+  padding:30px 0;
+  border-top:1px solid var(--line);
+}
+.obj-item:last-child{border-bottom:1px solid var(--line)}
+.obj-n{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:300;
+  font-size:1.5rem;
+  color:var(--clay);
+  line-height:1.4;
 }
 .obj-q{
-  display:flex;
-  align-items:flex-start;
-  gap:13px;
-  font-size:1.1rem;
-  font-weight:700;
-  color:var(--ink);
+  font-family:var(--serif);
+  font-weight:440;
+  font-size:1.28rem;
   letter-spacing:-.01em;
+  color:var(--ink);
   margin-bottom:10px;
 }
-.obj-q .qmark{
-  flex:none;
-  width:26px;height:26px;
-  background:var(--soft2);
-  color:var(--teal-dk);
-  border-radius:7px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:.9rem;font-weight:800;
-  margin-top:1px;
-}
-.obj-a{font-size:.96rem;color:var(--body);line-height:1.64;padding-left:39px}
-.obj-a b{color:var(--teal-dk);font-weight:700}
+.obj-a{font-size:1rem;color:var(--body);line-height:1.65;max-width:620px}
+.obj-a b{color:var(--teal-dk);font-weight:600}
 
-/* ── 4. GRAND SLAM OFFER ── */
-.offer{padding:78px 0}
-.offer-card{
-  max-width:760px;
-  margin:0 auto;
-  background:var(--bg);
-  border:2px solid var(--soft2);
-  border-radius:22px;
-  overflow:hidden;
-  box-shadow:0 24px 60px rgba(10,21,20,.1);
+/* ════ OFFER ════ */
+.offer{padding:88px 0}
+.offer-grid{
+  display:grid;
+  grid-template-columns:.85fr 1.15fr;
+  gap:56px;
+  align-items:center;
 }
-.offer-top{
+.offer-intro h2{
+  font-family:var(--serif);
+  font-weight:350;
+  font-size:clamp(2rem,4vw,3.1rem);
+  line-height:1.05;
+  letter-spacing:-.025em;
+  color:var(--ink);
+  margin:18px 0 18px;
+}
+.offer-intro h2 em{font-style:italic;color:var(--teal)}
+.offer-intro p{font-size:1.04rem;color:var(--body);line-height:1.62;max-width:380px}
+.offer-card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:36px 38px 34px;
+  box-shadow:0 36px 70px -28px rgba(21,32,29,.32);
+}
+.offer-card .label{margin-bottom:20px}
+.srow{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:18px;
+  padding:16px 0;
+  border-top:1px solid var(--line);
+}
+.srow:first-of-type{border-top:none;padding-top:0}
+.s-left{display:flex;align-items:flex-start;gap:13px}
+.s-tick{
+  flex:none;width:21px;height:21px;margin-top:2px;
+  border-radius:50%;
+  background:var(--teal-lt);
+  display:flex;align-items:center;justify-content:center;
+}
+.s-tick svg{width:12px;height:12px;color:var(--teal-dk)}
+.s-name{font-weight:600;color:var(--ink);font-size:.98rem;letter-spacing:-.005em}
+.s-desc{font-size:.84rem;color:var(--muted);margin-top:2px;line-height:1.45}
+.s-val{font-size:.86rem;color:var(--muted);font-weight:600;white-space:nowrap}
+.offer-total{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  margin-top:24px;
+  padding-top:22px;
+  border-top:2px solid var(--ink);
+}
+.ot-label{font-size:.82rem;color:var(--muted);letter-spacing:.02em;max-width:160px;line-height:1.4}
+.ot-prices{text-align:right;line-height:1}
+.ot-was{font-size:1rem;color:var(--muted);text-decoration:line-through;font-weight:600}
+.ot-now{font-family:var(--serif);font-weight:400;font-size:2.7rem;color:var(--clay);letter-spacing:-.02em;margin-top:4px}
+.offer-card .btn{width:100%;margin-top:24px;padding:18px}
+
+/* ════ GUARANTEE ════ */
+.guarantee{padding:0 0 88px}
+.guar{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:36px;
+  align-items:center;
+  max-width:860px;margin:0 auto;
   background:linear-gradient(135deg,var(--teal) 0%,var(--teal-dk) 100%);
-  color:#fff;
-  padding:34px 36px;
+  color:var(--paper);
+  border-radius:10px;
+  padding:44px 48px;
+  box-shadow:0 30px 64px -26px rgba(10,83,75,.6);
+}
+.guar-seal{
+  flex:none;
+  width:110px;height:110px;
+  border:1.5px solid rgba(251,247,238,.4);
+  border-radius:50%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;
 }
-.offer-top h2{
-  font-size:clamp(1.5rem,3vw,2.1rem);
-  font-weight:800;
-  letter-spacing:-.02em;
-  line-height:1.12;
-  margin-bottom:6px;
+.guar-seal .gn{font-family:var(--serif);font-weight:360;font-size:2.2rem;line-height:.9}
+.guar-seal .gt{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;margin-top:7px;color:rgba(251,247,238,.75)}
+.guar-text h3{font-family:var(--serif);font-weight:380;font-size:1.7rem;letter-spacing:-.01em;margin-bottom:10px}
+.guar-text p{font-size:1rem;color:rgba(251,247,238,.85);line-height:1.6;max-width:520px}
+
+/* ════ TESTIMONIAL ════ */
+.testi{padding:14px 0 90px;text-align:center}
+.testi-inner{max-width:760px;margin:0 auto;padding:0 32px}
+.testi .label{justify-content:center;margin-bottom:26px}
+.testi .label::before,.testi .label::after{content:'';width:22px;height:1px;background:var(--teal);opacity:.6}
+.testi blockquote{
+  font-family:var(--serif);
+  font-weight:340;
+  font-size:clamp(1.5rem,3.2vw,2.3rem);
+  line-height:1.32;
+  letter-spacing:-.015em;
+  color:var(--ink);
 }
-.offer-top p{font-size:.95rem;color:rgba(255,255,255,.82);font-weight:500}
-.offer-body{padding:14px 36px 34px}
-.stack-row{
+.testi blockquote em{font-style:italic;color:var(--teal)}
+.testi cite{
+  display:block;
+  margin-top:24px;
+  font-style:normal;
+  font-size:.82rem;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+/* ════ FINAL ════ */
+.final{background:var(--ink);color:var(--paper);text-align:center;padding:96px 0}
+.final h2{
+  font-family:var(--serif);
+  font-weight:340;
+  font-size:clamp(2.1rem,4.4vw,3.6rem);
+  line-height:1.04;
+  letter-spacing:-.025em;
+  color:var(--paper);
+  margin-bottom:18px;
+}
+.final h2 em{font-style:italic;color:#7fc9bd}
+.final p{color:rgba(251,247,238,.66);font-size:1.05rem;margin-bottom:34px}
+.final .btn{background:var(--paper);color:var(--teal-dk);box-shadow:0 16px 40px -12px rgba(0,0,0,.5)}
+.final .btn:hover{background:#fff}
+
+/* ════ FOOTER ════ */
+footer{background:var(--ink);border-top:1px solid rgba(251,247,238,.08);padding:28px 32px;text-align:center}
+footer p{font-size:.78rem;color:rgba(251,247,238,.38);line-height:1.5;letter-spacing:.02em}
+
+/* ════ STICKY BAR ════ */
+.sticky{
+  position:fixed;
+  bottom:0;left:0;right:0;
+  z-index:200;
+  background:var(--paper);
+  border-top:1px solid var(--line);
+  box-shadow:0 -8px 30px -8px rgba(21,32,29,.18);
+  padding:12px 20px;
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:16px;
-  padding:18px 0;
-  border-bottom:1px solid var(--line);
 }
-.stack-row:last-of-type{border-bottom:none}
-.stack-left{display:flex;align-items:flex-start;gap:13px}
-.stack-check{
-  flex:none;width:24px;height:24px;
-  background:var(--soft2);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  margin-top:2px;
-}
-.stack-check svg{width:14px;height:14px;color:var(--green)}
-.stack-name{font-weight:700;color:var(--ink);font-size:1rem;letter-spacing:-.01em}
-.stack-desc{font-size:.86rem;color:var(--muted);margin-top:2px}
-.stack-val{font-weight:700;color:var(--muted);font-size:.95rem;white-space:nowrap}
-.stack-val s{color:var(--muted);opacity:.8}
-.offer-total{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-top:22px;
-  padding:20px 22px;
-  background:var(--soft);
-  border-radius:14px;
-}
-.total-label{font-weight:600;color:var(--body);font-size:.92rem}
-.total-prices{text-align:right}
-.total-anchor{font-size:1.05rem;color:var(--muted);text-decoration:line-through;font-weight:600}
-.total-now{font-size:1.9rem;font-weight:800;color:var(--teal);letter-spacing:-.02em;line-height:1.1}
-.offer-cta{margin-top:24px;text-align:center}
-.offer-cta .btn{width:100%;font-size:1.1rem;padding:20px}
+.sticky-price{line-height:1.05}
+.sticky-price .sp-now{font-family:var(--serif);font-weight:400;font-size:1.45rem;color:var(--ink)}
+.sticky-price .sp-was{font-size:.82rem;color:var(--muted);text-decoration:line-through;margin-left:7px;font-weight:600}
+.sticky-price .sp-l{display:block;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:2px}
+.sticky .btn{flex:1;max-width:320px;padding:14px 24px;box-shadow:none}
 
-/* ── 5. GUARANTEE ── */
-.guarantee{padding:0 0 80px}
-.guar-card{
-  max-width:760px;
-  margin:0 auto;
-  display:flex;
-  align-items:center;
-  gap:28px;
-  background:var(--soft);
-  border:1px solid var(--line);
-  border-radius:20px;
-  padding:36px 40px;
-}
-.guar-seal{
-  flex:none;
-  width:96px;height:96px;
-  background:var(--bg);
-  border:2px solid var(--teal);
-  border-radius:50%;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;
-  box-shadow:0 8px 24px rgba(18,133,133,.18);
-}
-.guar-seal .gs-num{font-size:1.5rem;font-weight:800;color:var(--teal);line-height:1}
-.guar-seal .gs-txt{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-dk);margin-top:3px}
-.guar-text h3{font-size:1.3rem;font-weight:800;color:var(--ink);letter-spacing:-.02em;margin-bottom:8px}
-.guar-text p{font-size:.95rem;color:var(--body);line-height:1.62}
+/* ════ Scroll reveal ════ */
+@keyframes revUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.reveal{opacity:0}
+.reveal.vis{animation:revUp .8s cubic-bezier(.2,.7,.2,1) forwards}
 
-/* ── TESTIMONIAL ── */
-.testi{max-width:680px;margin:0 auto 64px;text-align:center;padding:0 24px}
-.testi-stars{color:var(--gold);font-size:1.2rem;letter-spacing:3px;margin-bottom:18px}
-.testi blockquote{
-  font-size:clamp(1.15rem,2.3vw,1.5rem);
-  font-weight:600;
-  color:var(--ink);
-  line-height:1.4;
-  letter-spacing:-.01em;
-  margin-bottom:16px;
-}
-.testi cite{font-style:normal;font-size:.85rem;font-weight:600;color:var(--muted);letter-spacing:.02em}
-
-/* ── FINAL CTA ── */
-.final{
-  background:var(--ink);
-  color:#fff;
-  text-align:center;
-  padding:72px 0;
-}
-.final h2{
-  font-size:clamp(1.8rem,3.6vw,2.6rem);
-  font-weight:800;
-  letter-spacing:-.025em;
-  line-height:1.12;
-  margin-bottom:14px;
-  color:#fff;
-}
-.final p{color:rgba(255,255,255,.72);font-size:1.02rem;margin-bottom:30px}
-.final .btn{background:#fff;color:var(--teal-dk);box-shadow:0 8px 24px rgba(0,0,0,.3)}
-.final .btn:hover{background:#eafafa}
-
-/* ── FOOTER (minimal, no leaks) ── */
-footer{
-  background:var(--ink);
-  border-top:1px solid rgba(255,255,255,.08);
-  padding:26px 24px;
-  text-align:center;
-}
-footer p{font-size:.78rem;color:rgba(255,255,255,.4);line-height:1.5}
-
-/* ── STICKY BOTTOM CTA BAR ── */
-.sticky-bar{
-  position:fixed;
-  bottom:0;left:0;right:0;
-  z-index:200;
-  background:#fff;
-  border-top:1px solid var(--line);
-  box-shadow:0 -6px 24px rgba(10,21,20,.1);
-  padding:11px 18px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:14px;
-}
-.sticky-price{line-height:1.1}
-.sticky-price .sp-now{font-size:1.32rem;font-weight:800;color:var(--ink);letter-spacing:-.02em}
-.sticky-price .sp-was{font-size:.82rem;color:var(--muted);text-decoration:line-through;margin-left:6px;font-weight:600}
-.sticky-price .sp-label{display:block;font-size:.68rem;color:var(--muted);font-weight:600;letter-spacing:.02em}
-.sticky-bar .btn{
-  flex:1;
-  max-width:300px;
-  padding:15px 24px;
-  font-size:1rem;
-  box-shadow:none;
+@media(prefers-reduced-motion:reduce){
+  .rise,.reveal,.reveal.vis{animation:none!important;opacity:1!important;transform:none!important}
 }
 
-/* ── Responsive ── */
-@media(max-width:880px){
-  .hero-grid{grid-template-columns:1fr;gap:36px}
-  .hero-img{order:-1;max-width:440px;margin:0 auto}
-  .value-grid{grid-template-columns:1fr;gap:16px}
-  .specs-grid{grid-template-columns:repeat(2,1fr);gap:30px 16px}
+/* ════ Responsive ════ */
+@media(max-width:900px){
+  .hero{padding:52px 0 56px}
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .hero-figure{order:-1;max-width:420px;margin:0 auto}
+  .hero-figure img{aspect-ratio:1/1}
+  .brow{grid-template-columns:1fr;gap:26px;padding:52px 0}
+  .brow.flip .brow-media{order:-1}
+  .brow-media{max-width:480px}
+  .offer-grid{grid-template-columns:1fr;gap:36px}
+  .specs-grid{grid-template-columns:repeat(2,1fr);gap:36px 24px}
 }
 @media(max-width:560px){
-  .hero{padding:40px 0 44px}
-  .hero h1{font-size:clamp(1.9rem,7vw,2.5rem)}
-  .hero-cta-row .btn{width:100%}
-  .value,.obj,.offer{padding:56px 0}
-  .offer-body{padding:14px 22px 28px}
-  .offer-top{padding:28px 24px}
-  .stack-val{font-size:.86rem}
-  .guar-card{flex-direction:column;text-align:center;gap:20px;padding:32px 26px}
-  .obj-a{padding-left:0}
-  .sticky-price .sp-label{display:none}
-  .sticky-bar .btn{flex:none;padding:14px 20px;font-size:.94rem}
+  .wrap{padding:0 22px}
+  .hero-price{left:auto;right:14px;bottom:14px;padding:14px 18px}
+  .hero-price .hp-now{font-size:1.6rem}
+  .obj,.offer{padding:64px 0}
+  .offer-card{padding:30px 24px 28px}
+  .guar{grid-template-columns:1fr;text-align:center;gap:24px;padding:38px 30px}
+  .guar-seal{margin:0 auto}
+  .guar-text p{margin:0 auto}
+  .obj-item{grid-template-columns:38px 1fr;gap:0 16px}
+  .specs-grid{gap:32px 16px}
+  .sticky-price .sp-l{display:none}
+  .sticky .btn{flex:none;padding:13px 20px;font-size:.92rem}
 }
 </style>
 </head>
 <body>
 
-<!-- ════ 1. HERO ════ -->
+<!-- ════ HERO ════ -->
 <section class="hero">
   <div class="wrap">
     <div class="hero-grid">
       <div class="hero-copy">
-        <span class="hero-flag">
-          <svg viewBox="0 0 24 24" fill="none" width="14" height="14"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4-6.3-4.6L5.7 21.4 8 14 2 9.4h7.6z" fill="currentColor"/></svg>
-          Australian Owned
-        </span>
-        <h1>One Sunday. Ten Containers.<br><span class="hl">A Whole Week Of Meals</span> Handled.</h1>
-        <p class="hero-sub">The 1040ml borosilicate glass set that goes straight from freezer to oven to table &mdash; without the leaks, the cracks, or the cupboard full of mismatched lids.</p>
-        <div class="hero-cta-row">
-          <a href="https://www.amazon.com.au/dp/B0G5HH4Z1F" class="btn" rel="noopener" target="_blank">Get The 10-Pack On Amazon &mdash; $59.99 &rarr;</a>
-          <span class="btn-sub">Free delivery &middot; In stock &middot; Ships today from Amazon AU</span>
+        <span class="label rise d1">Australian Owned &middot; 10-Pack</span>
+        <h1 class="rise d2">One Sunday's prep.<br>A whole week of<br><em>meals, handled.</em></h1>
+        <p class="hero-sub rise d3">Ten 1040ml borosilicate glass containers that travel straight from freezer to oven to table &mdash; without the leaks, the cracks, or the cupboard full of orphaned lids.</p>
+        <div class="hero-cta rise d4">
+          <a href="https://www.amazon.com.au/dp/B0G5HH4Z1F" class="btn" rel="noopener" target="_blank">Get the 10-Pack &mdash; $59.99 <span class="arw">&rarr;</span></a>
+          <span class="btn-note">Free delivery &middot; In stock &middot; Ships today from Amazon AU</span>
         </div>
-        <div class="hero-trust">
-          <span class="trust-item"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>100% Leakproof Lids</span>
-          <span class="trust-item"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Oven &amp; Freezer Safe</span>
-          <span class="trust-item"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>BPA Free</span>
+        <div class="hero-trust rise d5">
+          <span class="trust-item"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Leakproof lids</span>
+          <span class="trust-item"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Oven &amp; freezer safe</span>
+          <span class="trust-item"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>BPA free</span>
         </div>
       </div>
-      <div class="hero-img">
-        <span class="hero-badge">10-Pack &middot; 1040ml</span>
-        <img src="img/hero.jpg" alt="Stack of 1040ml borosilicate glass meal prep containers filled with prepared meals" loading="eager">
-      </div>
+      <figure class="hero-figure rise d3">
+        <img src="img/hero.jpg" alt="Ten 1040ml borosilicate glass meal prep containers stacked and filled with prepared meals" loading="eager">
+        <figcaption class="hero-price">
+          <span class="hp-now">$59.99</span>
+          <span class="hp-meta">10 containers + lids</span>
+        </figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
-<!-- ════ 2. VALUE BREAKDOWN ════ -->
-<section class="value">
+<!-- ════ BENEFIT ROWS ════ -->
+<section class="benefits">
   <div class="wrap">
-    <div class="section-head">
-      <span class="kicker">Why This Set Ends The Search</span>
-      <h2>Built for the three things plastic always gets wrong.</h2>
+
+    <div class="brow reveal">
+      <div class="brow-media"><img src="img/06.jpg" alt="Leakproof glass container with four-clip silicone-sealed lid" loading="lazy"></div>
+      <div class="brow-text">
+        <span class="brow-num">01 &mdash; The seal</span>
+        <h2>Carry soup in your bag. <em>Sideways.</em></h2>
+        <p>Four locking clips compress a silicone gasket the whole way around the rim. You feel each one snap shut &mdash; so what's in the container stays in the container, not pooled at the bottom of your work bag.</p>
+        <span class="brow-tag">Genuinely leakproof, not &ldquo;splash-resistant&rdquo;</span>
+      </div>
     </div>
-    <div class="value-grid">
 
-      <div class="vcard">
-        <div class="vicon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8 7 6 10 6 14a6 6 0 0012 0c0-4-2-7-6-12z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
-        <h3>Sealed Tight, Every Time</h3>
-        <p>Four locking clips and a silicone gasket grip all the way around. Throw a soup-filled container in your bag sideways &mdash; it stays in the container, not on your laptop.</p>
+    <div class="brow flip reveal">
+      <div class="brow-media"><img src="img/03.jpg" alt="Glass container moving from freezer to a hot oven" loading="lazy"></div>
+      <div class="brow-text">
+        <span class="brow-num">02 &mdash; The glass</span>
+        <h2>Freezer Friday.<br><em>Oven Wednesday.</em></h2>
+        <p>Borosilicate takes -20&deg;C to 400&deg;C without so much as a hairline crack. Prep it, freeze it, then slide the very same dish into a hot oven days later. No transfer plate. No thawing wait. No second thing to wash.</p>
+        <span class="brow-tag">One dish, start to finish</span>
       </div>
-
-      <div class="vcard">
-        <div class="vicon"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12h18M12 3v18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg></div>
-        <h3>Freezer Friday, Oven Wednesday</h3>
-        <p>Borosilicate glass takes -20&deg;C to 400&deg;C without cracking. Prep it, freeze it, then slide the same dish straight into a hot oven. No transfer dish. No thawing wait. No extra washing up.</p>
-      </div>
-
-      <div class="vcard">
-        <div class="vicon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 9h18M9 21V9" stroke="currentColor" stroke-width="2"/></svg></div>
-        <h3>The Size That Just Fits</h3>
-        <p>1040ml holds one proper meal &mdash; protein, carbs and veg, no Tetris. The footprint is sized to line up on a standard fridge shelf and stack flat, so ten of them disappear into the space three odd tubs used to hog.</p>
-      </div>
-
     </div>
+
+    <div class="brow reveal">
+      <div class="brow-media"><img src="img/05.jpg" alt="1040ml glass containers stacked flat on a fridge shelf" loading="lazy"></div>
+      <div class="brow-text">
+        <span class="brow-num">03 &mdash; The size</span>
+        <h2>The 1040ml that <em>just fits.</em></h2>
+        <p>Enough for one proper meal &mdash; protein, carbs and veg, no Tetris. The footprint is sized for a standard Australian fridge shelf, and the flat lids stack two and three high. Ten of these vanish into the space three odd tubs used to hog.</p>
+        <span class="brow-tag">A shelf that finally makes sense</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- ════ SPEC STRIP (proof) ════ -->
+<!-- ════ SPEC BAND ════ -->
 <section class="specs">
   <div class="wrap">
     <div class="specs-grid">
-      <div><div class="spec-num">10<span>×</span></div><div class="spec-label">Containers + Lids</div></div>
-      <div><div class="spec-num">1040<span>ml</span></div><div class="spec-label">Per Container</div></div>
-      <div><div class="spec-num">400<span>&deg;C</span></div><div class="spec-label">Oven-Safe Limit</div></div>
-      <div><div class="spec-num">4<span>-clip</span></div><div class="spec-label">Leakproof Seal</div></div>
+      <div class="spec"><div class="spec-n">10<span>&times;</span></div><div class="spec-l">Containers + Lids</div></div>
+      <div class="spec"><div class="spec-n">1040<span>ml</span></div><div class="spec-l">Per Container</div></div>
+      <div class="spec"><div class="spec-n">400<span>&deg;C</span></div><div class="spec-l">Oven-Safe Limit</div></div>
+      <div class="spec"><div class="spec-n">4<span>clip</span></div><div class="spec-l">Leakproof Seal</div></div>
     </div>
   </div>
 </section>
 
-<!-- ════ 3. OBJECTIONS ════ -->
+<!-- ════ OBJECTIONS ════ -->
 <section class="obj">
   <div class="wrap">
-    <div class="section-head">
-      <span class="kicker">Before You Ask</span>
-      <h2>The three questions everyone has &mdash; answered straight.</h2>
+    <div class="obj-head">
+      <span class="label">Before you ask</span>
+      <h2>Three honest answers to the <em>three real questions.</em></h2>
     </div>
     <div class="obj-list">
 
-      <div class="obj-item">
-        <div class="obj-q"><span class="qmark">?</span>Will they survive the dishwasher long-term?</div>
-        <p class="obj-a">Yes &mdash; <b>glass and lids are both fully dishwasher safe</b>. Borosilicate doesn't warp, cloud or absorb stains the way plastic does, so the set that comes out of the dishwasher on day 900 looks like the one you opened on day one.</p>
+      <div class="obj-item reveal">
+        <div class="obj-n">i.</div>
+        <div>
+          <div class="obj-q">Will they survive the dishwasher, long-term?</div>
+          <p class="obj-a">Yes &mdash; <b>glass and lids are both fully dishwasher safe</b>. Borosilicate doesn't warp, cloud or hold onto curry stains the way plastic does. The set that comes out on day 900 looks like the one you opened on day one.</p>
+        </div>
       </div>
 
-      <div class="obj-item">
-        <div class="obj-q"><span class="qmark">?</span>Are they actually leakproof, or just &ldquo;splash-resistant&rdquo;?</div>
-        <p class="obj-a">Genuinely leakproof. <b>Four independent clips compress a silicone seal</b> around the entire rim. You feel each one snap shut. Carry broth in a backpack, lay it flat on the car seat &mdash; it holds.</p>
+      <div class="obj-item reveal">
+        <div class="obj-n">ii.</div>
+        <div>
+          <div class="obj-q">Are they truly leakproof, or just close?</div>
+          <p class="obj-a">Truly. <b>Four independent clips compress a silicone seal</b> around the entire rim &mdash; you hear and feel each one engage. Broth in a backpack, flat on the car seat: it holds.</p>
+        </div>
       </div>
 
-      <div class="obj-item">
-        <div class="obj-q"><span class="qmark">?</span>Will they fit my fridge shelves?</div>
-        <p class="obj-a">They're built to. The <b>1040ml footprint is sized for standard Australian fridge shelves</b> and the flat lids let you stack them two and three high without the lean-and-topple of round tubs.</p>
+      <div class="obj-item reveal">
+        <div class="obj-n">iii.</div>
+        <div>
+          <div class="obj-q">Will they actually fit my fridge shelves?</div>
+          <p class="obj-a">They're designed to. The <b>1040ml footprint suits standard Australian fridge shelves</b>, and flat lids let you stack them high without the lean-and-topple of round tubs.</p>
+        </div>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ════ 4. GRAND SLAM OFFER ════ -->
+<!-- ════ OFFER ════ -->
 <section class="offer">
   <div class="wrap">
-    <div class="offer-card">
-      <div class="offer-top">
-        <h2>The Complete Meal-Prep Kit</h2>
-        <p>Everything you need to prep a full week in one box.</p>
+    <div class="offer-grid">
+      <div class="offer-intro">
+        <span class="label">The whole kit</span>
+        <h2>Everything for a full week, <em>in one box.</em></h2>
+        <p>Bought piece by piece, a set like this runs well past $160. Here it's one box, one price, one decision &mdash; and it's the last set you buy for a decade.</p>
       </div>
-      <div class="offer-body">
+      <div class="offer-card">
+        <span class="label">What's included</span>
 
-        <div class="stack-row">
-          <div class="stack-left">
-            <span class="stack-check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <div><div class="stack-name">10 × 1040ml Borosilicate Containers</div><div class="stack-desc">Oven, microwave, freezer &amp; dishwasher safe</div></div>
+        <div class="srow">
+          <div class="s-left">
+            <span class="s-tick"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div><div class="s-name">10 &times; 1040ml Borosilicate Containers</div><div class="s-desc">Oven, microwave, freezer &amp; dishwasher safe</div></div>
           </div>
-          <div class="stack-val">$120 value</div>
+          <div class="s-val">$120</div>
         </div>
 
-        <div class="stack-row">
-          <div class="stack-left">
-            <span class="stack-check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <div><div class="stack-name">10 × 4-Clip Leakproof Lids</div><div class="stack-desc">Silicone-sealed, BPA free, vented for microwaving</div></div>
+        <div class="srow">
+          <div class="s-left">
+            <span class="s-tick"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div><div class="s-name">10 &times; 4-Clip Leakproof Lids</div><div class="s-desc">Silicone-sealed, BPA free, vented for microwaving</div></div>
           </div>
-          <div class="stack-val">$40 value</div>
+          <div class="s-val">$40</div>
         </div>
 
-        <div class="stack-row">
-          <div class="stack-left">
-            <span class="stack-check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <div><div class="stack-name">Portion &amp; Prep Sizing Guide</div><div class="stack-desc">How to fill a balanced 1040ml meal, free in every box</div></div>
+        <div class="srow">
+          <div class="s-left">
+            <span class="s-tick"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div><div class="s-name">Portion &amp; Prep Sizing Guide</div><div class="s-desc">How to build a balanced 1040ml meal &mdash; in every box</div></div>
           </div>
-          <div class="stack-val">Bonus</div>
+          <div class="s-val">Bonus</div>
         </div>
 
-        <div class="stack-row">
-          <div class="stack-left">
-            <span class="stack-check"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <div><div class="stack-name">The Decade Promise</div><div class="stack-desc">Built to outlast ten years of daily use &mdash; details below</div></div>
+        <div class="srow">
+          <div class="s-left">
+            <span class="s-tick"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div><div class="s-name">The Decade Promise</div><div class="s-desc">Built to outlast ten years of daily use</div></div>
           </div>
-          <div class="stack-val">Included</div>
+          <div class="s-val">Included</div>
         </div>
 
         <div class="offer-total">
-          <span class="total-label">Buy the pieces separately and you'd pay $160+. Today:</span>
-          <div class="total-prices">
-            <div class="total-anchor">$160</div>
-            <div class="total-now">$59.99</div>
+          <span class="ot-label">Separately you'd pay $160+. Today:</span>
+          <div class="ot-prices">
+            <div class="ot-was">$160</div>
+            <div class="ot-now">$59.99</div>
           </div>
         </div>
 
-        <div class="offer-cta">
-          <a href="https://www.amazon.com.au/dp/B0G5HH4Z1F" class="btn" rel="noopener" target="_blank">Claim Your 10-Pack Kit &mdash; $59.99 &rarr;</a>
-          <span class="btn-sub">Secure Amazon checkout &middot; Free delivery &middot; Ships today</span>
-        </div>
-
+        <a href="https://www.amazon.com.au/dp/B0G5HH4Z1F" class="btn" rel="noopener" target="_blank">Claim your 10-pack kit <span class="arw">&rarr;</span></a>
+        <span class="btn-note" style="text-align:center">Secure Amazon checkout &middot; Free delivery &middot; Ships today</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════ 5. GUARANTEE ════ -->
+<!-- ════ GUARANTEE ════ -->
 <section class="guarantee">
   <div class="wrap">
-    <div class="guar-card">
+    <div class="guar">
       <div class="guar-seal">
-        <span class="gs-num">10yr</span>
-        <span class="gs-txt">Promise</span>
+        <span class="gn">10</span>
+        <span class="gt">Year Promise</span>
       </div>
       <div class="guar-text">
         <h3>The Decade Promise</h3>
-        <p>We engineered this set to be the last meal-prep containers you buy for ten years. If a container chips, cracks or a lid stops sealing in normal kitchen use, Amazon's hassle-free returns are one tap away &mdash; no forms, no shipping fights, no risk. You decide at the kitchen bench, not at checkout.</p>
+        <p>We built this to be the last meal-prep set you buy for ten years. If a container chips, cracks, or a lid stops sealing in normal kitchen use, Amazon's hassle-free returns are one tap away &mdash; no forms, no shipping arguments, no risk. You decide at your kitchen bench, not at checkout.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ════ TESTIMONIAL ════ -->
-<div class="testi">
-  <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-  <blockquote>&ldquo;Finally a set where the lids actually hold. Four clips, a proper seal, and months of daily use without a single leak. Exactly what I thought I was buying the last three times.&rdquo;</blockquote>
-  <cite>&mdash; Verified Customer, Amazon AU</cite>
-</div>
+<section class="testi">
+  <div class="testi-inner">
+    <span class="label">Verified review</span>
+    <blockquote>&ldquo;Finally a set where the lids <em>actually hold.</em> Four clips, a proper seal, months of daily use without a single leak. Exactly what I thought I was buying the last three times.&rdquo;</blockquote>
+    <cite>Verified Customer &middot; Amazon AU</cite>
+  </div>
+</section>
 
-<!-- ════ FINAL CTA ════ -->
+<!-- ════ FINAL ════ -->
 <section class="final">
   <div class="wrap">
-    <h2>Prep once. Eat right all week.</h2>
+    <h2>Prep once.<br><em>Eat right all week.</em></h2>
     <p>Ten containers. One Sunday. Zero leaks. $59.99 on Amazon AU.</p>
-    <a href="https://www.amazon.com.au/dp/B0G5HH4Z1F" class="btn" rel="noopener" target="_blank">Get The 10-Pack On Amazon &rarr;</a>
+    <a href="https://www.amazon.com.au/dp/B0G5HH4Z1F" class="btn" rel="noopener" target="_blank">Get the 10-Pack on Amazon <span class="arw">&rarr;</span></a>
   </div>
 </section>
 
@@ -639,14 +713,27 @@ footer p{font-size:.78rem;color:rgba(255,255,255,.4);line-height:1.5}
   <p>&copy; 2025 Hollis Enterprises &middot; Australian owned &middot; 1040ml Borosilicate Glass Meal Prep Containers</p>
 </footer>
 
-<!-- ════ STICKY BOTTOM CTA BAR ════ -->
-<div class="sticky-bar">
+<!-- ════ STICKY BAR ════ -->
+<div class="sticky">
   <div class="sticky-price">
-    <span class="sp-label">10-Pack Kit</span>
     <span class="sp-now">$59.99</span><span class="sp-was">$160</span>
+    <span class="sp-l">10-Pack Kit</span>
   </div>
-  <a href="https://www.amazon.com.au/dp/B0G5HH4Z1F" class="btn" rel="noopener" target="_blank">Buy On Amazon &rarr;</a>
+  <a href="https://www.amazon.com.au/dp/B0G5HH4Z1F" class="btn" rel="noopener" target="_blank">Buy on Amazon <span class="arw">&rarr;</span></a>
 </div>
 
+<script>
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if(!els.length) return;
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('vis')});return;}
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(x){
+      if(x.isIntersecting){ x.target.classList.add('vis'); io.unobserve(x.target); }
+    });
+  },{threshold:0.14,rootMargin:'0px 0px -50px 0px'});
+  els.forEach(function(el){ io.observe(el); });
+})();
+</script>
 </body>
 </html>
