@@ -26,6 +26,7 @@
 const { useState, useEffect, useRef } = React;
 const AMAZON = "https://www.amazon.com.au/dp/B0G5HH4Z1F";
 const ORANGE = "#FF9900";
+const FORMSPREE = "https://formspree.io/f/YOUR_FORM_ID"; // ← replace with your Formspree endpoint
 
 /* ── Lucide-style icons (inline SVG, no bundler needed) ── */
 const Ic = ({ children, size = 24, className = "", sw = 2, fill = "none" }) => (
@@ -230,12 +231,17 @@ function ValueStack() {
 function Verify() {
   const [f, setF] = useState({ name: "", email: "", order: "" });
   const [done, setDone] = useState(false);
-  const submit = (e) => {
+  const [loading, setLoading] = useState(false);
+  const submit = async (e) => {
     e.preventDefault();
     if (!f.name || !f.email || !f.order) return;
-    const subject = encodeURIComponent(`Hollis Bonus Claim – Order ${f.order}`);
-    const body = encodeURIComponent(`Name: ${f.name}\nEmail: ${f.email}\nAmazon Order ID: ${f.order}`);
-    window.open(`mailto:hollisenterprises@outlook.com.au?subject=${subject}&body=${body}`);
+    setLoading(true);
+    await fetch(FORMSPREE, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({ _subject: `Bonus Claim – Order ${f.order}`, name: f.name, email: f.email, order: f.order }),
+    }).catch(() => {});
+    setLoading(false);
     setDone(true);
   };
   return (
@@ -255,8 +261,8 @@ function Verify() {
                      className="w-full border-2 border-neutral-300 focus:border-emerald-500 outline-none rounded-lg px-4 py-3 text-[16px]"/>
               <input required placeholder="Amazon Order ID (e.g. 249-1234567-1234567)" value={f.order} onChange={e => setF({ ...f, order: e.target.value })}
                      className="w-full border-2 border-neutral-300 focus:border-emerald-500 outline-none rounded-lg px-4 py-3 text-[16px]"/>
-              <button type="submit" className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold rounded-lg px-5 py-4 text-lg transition-colors">
-                Verify Order &amp; Unlock My Bonuses &rarr;
+              <button type="submit" disabled={loading} className="w-full bg-emerald-500 hover:bg-emerald-600 disabled:opacity-60 text-white font-extrabold rounded-lg px-5 py-4 text-lg transition-colors">
+                {loading ? "Sending…" : "Verify Order & Unlock My Bonuses →"}
               </button>
             </form>
             <p className="text-[11px] text-neutral-400 mt-3 text-center">We only use your details to deliver your bonuses. No spam, ever.</p>
@@ -348,13 +354,18 @@ function Sticky({ show }) {
 function ExitModal({ open, onClose }) {
   const [f, setF] = useState({ name: "", email: "" });
   const [done, setDone] = useState(false);
+  const [loading, setLoading] = useState(false);
   if (!open) return null;
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
     if (!f.name || !f.email) return;
-    const subject = encodeURIComponent('7-Day Blueprint Request');
-    const body = encodeURIComponent(`Name: ${f.name}\nEmail: ${f.email}`);
-    window.open(`mailto:hollisenterprises@outlook.com.au?subject=${subject}&body=${body}`);
+    setLoading(true);
+    await fetch(FORMSPREE, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({ _subject: "7-Day Blueprint Request", name: f.name, email: f.email, type: "blueprint" }),
+    }).catch(() => {});
+    setLoading(false);
     setDone(true);
   };
   return (
@@ -373,8 +384,8 @@ function ExitModal({ open, onClose }) {
                      className="w-full border-2 border-neutral-300 focus:border-[#FF9900] outline-none rounded-lg px-4 py-3 text-[16px]"/>
               <input required type="email" placeholder="Your best email" value={f.email} onChange={e => setF({ ...f, email: e.target.value })}
                      className="w-full border-2 border-neutral-300 focus:border-[#FF9900] outline-none rounded-lg px-4 py-3 text-[16px]"/>
-              <button type="submit" style={{ backgroundColor: ORANGE }} className="w-full text-[#0f1111] font-extrabold rounded-lg px-5 py-3.5 text-lg hover:brightness-105 transition">
-                Send Me The Blueprint &rarr;
+              <button type="submit" disabled={loading} style={{ backgroundColor: ORANGE }} className="w-full text-[#0f1111] font-extrabold rounded-lg px-5 py-3.5 text-lg hover:brightness-105 disabled:opacity-60 transition">
+                {loading ? "Sending…" : "Send Me The Blueprint →"}
               </button>
             </form>
             <p className="text-[11px] text-neutral-400 mt-3">No spam. Unsubscribe anytime.</p>
