@@ -3,40 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>10-Pack 1040ml Borosilicate Glass Meal Prep Containers — $59.99</title>
-<meta name="description" content="The last meal prep containers you'll ever buy. 10 leakproof 1040ml borosilicate glass containers — oven, microwave, freezer & dishwasher safe. Backed by a 2-year No-Crack, No-Leak guarantee. $59.99.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>10-Pack 1040ml Borosilicate Glass Meal Prep Containers — On Amazon $59.99</title>
+<meta name="description" content="The last meal prep containers you'll ever buy. 10 leakproof 1040ml borosilicate glass containers on Amazon — oven, microwave, freezer & dishwasher safe. Order on Amazon and unlock your $147 bonus bundle.">
 <script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          ink:   '#0c0f0e',
-          paper: '#ffffff',
-        },
-        fontFamily: {
-          display: ['Archivo', 'system-ui', 'sans-serif'],
-          sans:    ['Hanken Grotesk', 'system-ui', 'sans-serif'],
-        },
-      },
-    },
-  };
-</script>
 <style>
   html{ -webkit-text-size-adjust:100%; }
-  body{ font-family:'Hanken Grotesk',system-ui,sans-serif; }
-  .font-display{ font-family:'Archivo',system-ui,sans-serif; }
-  /* accordion height transition only — no scroll fade-ins */
+  /* Native system font stack only — no web fonts, fast on mobile */
+  body{ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
   .acc-body{ transition:max-height .28s ease, opacity .2s ease; overflow:hidden; }
   @keyframes modalIn{ from{opacity:0; transform:translateY(12px)} to{opacity:1; transform:none} }
-  .modal-card{ animation:modalIn .22s ease-out forwards; }
+  .modal-card{ animation:modalIn .2s ease-out forwards; }
   @media (prefers-reduced-motion: reduce){ .modal-card{ animation:none } .acc-body{ transition:none } }
 </style>
 </head>
-<body class="bg-paper text-ink">
+<body class="bg-white text-[#0c0f0e]">
 <div id="root"></div>
 
 <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
@@ -45,8 +25,9 @@
 <script type="text/babel" data-presets="react">
 const { useState, useEffect, useRef } = React;
 const AMAZON = "https://www.amazon.com.au/dp/B0G5HH4Z1F";
+const ORANGE = "#FF9900";
 
-/* ── Lucide-style icons (MIT path data, inline so no bundler is required) ── */
+/* ── Lucide-style icons (inline SVG, no bundler needed) ── */
 const Ic = ({ children, size = 24, className = "", sw = 2, fill = "none" }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24"
        fill={fill} stroke="currentColor" strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round"
@@ -55,40 +36,40 @@ const Ic = ({ children, size = 24, className = "", sw = 2, fill = "none" }) => (
 const Check   = p => <Ic {...p}><path d="M20 6 9 17l-5-5"/></Ic>;
 const XIcon   = p => <Ic {...p}><path d="M18 6 6 18"/><path d="m6 6 12 12"/></Ic>;
 const Shield  = p => <Ic {...p}><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></Ic>;
-const Flame   = p => <Ic {...p}><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></Ic>;
 const Snow    = p => <Ic {...p}><path d="m10 20-1.25-2.5L6 18"/><path d="M10 4 8.75 6.5 6 6"/><path d="m14 20 1.25-2.5L18 18"/><path d="m14 4 1.25 2.5L18 6"/><path d="m17 21-3-6h-4"/><path d="m17 3-3 6 1.5 3"/><path d="M2 12h6.5L10 9"/><path d="m20 10-1.5 2 1.5 2"/><path d="M22 12h-6.5L14 15"/><path d="m4 10 1.5 2L4 14"/><path d="m7 21 3-6-1.5-3"/><path d="m7 3 3 6h4"/></Ic>;
 const Lock    = p => <Ic {...p}><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></Ic>;
 const Book    = p => <Ic {...p}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></Ic>;
-const Gift    = p => <Ic {...p}><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></Ic>;
 const Chevron = p => <Ic {...p}><path d="m6 9 6 6 6-6"/></Ic>;
 const Truck   = p => <Ic {...p}><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 18.52 8H14"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></Ic>;
 const Warn    = p => <Ic {...p}><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3z"/><path d="M12 9v4"/><path d="M12 17h.01"/></Ic>;
-const Users   = p => <Ic {...p}><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></Ic>;
-const Star    = ({ size = 18, className = "" }) => (
+const Cart    = p => <Ic {...p}><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></Ic>;
+const Mail    = p => <Ic {...p}><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></Ic>;
+const Gift    = p => <Ic {...p}><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></Ic>;
+const Star    = ({ size = 15, className = "" }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
     <path d="M12 2l2.95 6.55L22 9.24l-5 4.73L18.18 21 12 17.27 5.82 21 7 13.97l-5-4.73 7.05-.69z"/>
   </svg>
 );
 
-/* ── Primary CTA button ── */
+/* ── Amazon-orange CTA ── */
 const CTA = ({ children, className = "", full = false }) => (
   <a href={AMAZON} target="_blank" rel="noopener"
-     className={`inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 active:bg-amber-600
-                 text-ink font-display font-extrabold tracking-tight rounded-lg
-                 shadow-[0_10px_0_-2px_rgba(180,83,9,.55)] hover:shadow-[0_8px_0_-2px_rgba(180,83,9,.55)]
-                 hover:translate-y-[2px] transition-all px-6 py-4 text-lg
+     style={{ backgroundColor: ORANGE }}
+     className={`inline-flex items-center justify-center gap-2 text-[#0f1111] font-extrabold tracking-tight rounded-lg
+                 shadow-[0_10px_0_-2px_rgba(180,98,0,.5)] hover:brightness-105 hover:translate-y-[2px]
+                 hover:shadow-[0_8px_0_-2px_rgba(180,98,0,.5)] transition-all px-6 py-4 text-lg
                  ${full ? "w-full" : ""} ${className}`}>
-    {children}
+    <Cart size={20} sw={2.4} className="flex-none" />{children}
   </a>
 );
 
-/* ── 1. URGENCY BANNER ── */
+/* ── 1. STOCK ALERT BANNER ── */
 function Banner() {
   return (
-    <div className="bg-ink text-amber-400 text-center text-[13px] sm:text-sm font-semibold px-4 py-2.5
+    <div className="bg-[#0c0f0e] text-[#FF9900] text-center text-[12.5px] sm:text-sm font-semibold px-4 py-2.5
                     flex items-center justify-center gap-2 leading-tight">
-      <Warn size={16} className="flex-none text-amber-400" sw={2.4} />
-      <span><span className="text-white">Limited production run:</span> capped at 400 sets — borosilicate supply is tight. Next batch ships in ~8 weeks.</span>
+      <Warn size={16} className="flex-none" sw={2.4} />
+      <span><span className="text-white">Amazon stock alert:</span> high Sunday-prep demand — this run is capped at 400 total sets. Next batch ships in 8 weeks.</span>
     </div>
   );
 }
@@ -99,27 +80,28 @@ function Hero({ heroRef }) {
     <header ref={heroRef} className="px-5 pt-9 pb-10 sm:pt-14 sm:pb-16 max-w-6xl mx-auto">
       <div className="grid lg:grid-cols-2 gap-9 lg:gap-14 items-center">
         <div>
-          <span className="inline-block bg-amber-100 text-amber-900 font-bold text-xs tracking-wider uppercase px-3 py-1.5 rounded">
-            Australian Owned · 10-Pack
+          <span className="inline-block bg-orange-100 text-orange-900 font-bold text-xs tracking-wider uppercase px-3 py-1.5 rounded">
+            Amazon Exclusive Bundle · 10-Pack
           </span>
-          <h1 className="font-display font-black text-ink leading-[0.98] tracking-tight mt-5
-                         text-[2.6rem] sm:text-6xl lg:text-[4.1rem]">
-            The last meal prep containers you'll ever buy. <span className="text-amber-500">Period.</span>
+          <h1 className="font-black leading-[0.98] tracking-tight mt-5 text-[2.6rem] sm:text-6xl lg:text-[4rem]">
+            The last meal prep containers you'll ever buy. <span className="text-[#FF9900]">Period.</span>
           </h1>
           <p className="mt-5 text-[17px] sm:text-xl text-neutral-700 leading-relaxed max-w-xl">
-            10&times; premium 1040ml borosilicate glass containers. 100% leakproof. Oven, microwave &amp; dishwasher
-            safe. Built for the Sunday-prep lifestyle and backed by an ironclad <strong className="text-ink">2-year warranty</strong>.
+            10&times; premium 1040ml borosilicate glass containers. 100% leakproof. Oven, microwave &amp; dishwasher safe.
+            Grab our exclusive bundle on Amazon today and unlock <strong className="text-[#0c0f0e]">$87 in free digital bonuses</strong>.
           </p>
           <div className="mt-7">
-            <CTA full className="sm:w-auto">Get My 10-Pack Bundle — $59.99 &rarr;</CTA>
-            <div className="mt-3 flex items-center gap-2 text-sm text-neutral-600">
-              <span className="flex text-amber-500"><Star/><Star/><Star/><Star/><Star/></span>
-              <span className="font-semibold text-ink">Loved by Aussie meal-preppers</span>
-              <span className="text-neutral-400">·</span>
-              <span>backed by our 2-Year Guarantee</span>
+            <CTA full className="sm:w-auto">View Bundle Offer on Amazon — $59.99 &rarr;</CTA>
+            <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
+              <span className="flex text-[#FF9900]"><Star/><Star/><Star/><Star/><Star/></span>
+              <span className="font-bold text-[#0c0f0e]">4.9/5 Rating</span>
+              <span className="text-neutral-300">|</span>
+              <span className="text-neutral-600">1,420+ Verified Preppers</span>
+              <span className="text-neutral-300">|</span>
+              <span className="text-neutral-600">Available on Amazon Prime</span>
             </div>
             <div className="mt-2 flex items-center gap-1.5 text-sm text-neutral-600">
-              <Truck size={16} className="text-emerald-600"/> Free delivery · In stock · Ships today from Amazon AU
+              <Truck size={16} className="text-emerald-600"/> Free Prime delivery · In stock · Ships today
             </div>
           </div>
         </div>
@@ -127,38 +109,37 @@ function Hero({ heroRef }) {
           <img src="img/hero.jpg" alt="Ten 1040ml borosilicate glass meal prep containers stacked and filled with prepared meals"
                className="w-full aspect-square object-cover rounded-2xl shadow-2xl border border-neutral-200" loading="eager"/>
           <div className="absolute -bottom-4 -left-3 sm:-left-5 bg-white rounded-xl shadow-xl border border-neutral-200 px-5 py-3">
-            <div className="font-display font-black text-3xl text-ink leading-none">$59.99</div>
+            <div className="font-black text-3xl text-[#0c0f0e] leading-none">$59.99</div>
             <div className="text-[11px] uppercase tracking-widest text-neutral-500 mt-1 font-semibold">10 containers + lids</div>
           </div>
-          <div className="absolute top-3 right-3 bg-ink text-white text-xs font-bold px-3 py-1.5 rounded-full">10-Pack · 1040ml</div>
+          <div style={{ backgroundColor: ORANGE }} className="absolute top-3 right-3 text-[#0f1111] text-xs font-bold px-3 py-1.5 rounded-full">On Amazon</div>
         </div>
       </div>
     </header>
   );
 }
 
-/* ── 3. OLD WAY vs NEW WAY ── */
+/* ── 3. OLD vs NEW ── */
 function OldVsNew() {
   const rows = [
-    ["Material",          "Cheap PP plastic",                  "Industrial borosilicate glass"],
-    ["In the microwave",  "Warps, melts, can leach BPA",       "Inert — nothing leaches into your food"],
-    ["Thermal range",     "Cracks if it goes cold to hot",     "Thermal-shock proof, -20°C to 400°C"],
-    ["Stains & odour",    "Holds tomato stains & garlic smell","Non-porous — comes clean every wash"],
-    ["The lid",           "Pops open, leaks in your bag",      "Smart-Lock 4-clip airtight seal"],
-    ["Real cost",         "$15 again. And again. And again.",  "$59.99 once, built to last a decade"],
+    ["Material",          "Cheap PP plastic",                   "Industrial borosilicate glass"],
+    ["In the microwave",  "Warps, melts, can leach BPA",        "Inert — nothing leaches into your food"],
+    ["Thermal range",     "Cracks going cold to hot",           "Thermal-shock proof, -20°C to 400°C"],
+    ["Stains & odour",    "Holds tomato stains & garlic smell", "Non-porous — comes clean every wash"],
+    ["The lid",           "Pops open, leaks in your bag",       "Smart-Lock 4-clip airtight seal"],
+    ["Real cost",         "$15 again. And again. And again.",   "$59.99 once, built to last a decade"],
   ];
   return (
     <section className="bg-neutral-50 border-y border-neutral-200 px-5 py-14 sm:py-20">
       <div className="max-w-4xl mx-auto">
-        <h2 className="font-display font-black text-center text-ink tracking-tight leading-tight text-3xl sm:text-5xl">
+        <h2 className="font-black text-center tracking-tight leading-tight text-3xl sm:text-5xl">
           Stop re-buying the <span className="text-red-600">same cheap tubs.</span>
         </h2>
         <p className="text-center text-neutral-600 mt-3 text-[17px] max-w-2xl mx-auto">
           Here's exactly what you're escaping — and what you're stepping up to.
         </p>
-
         <div className="mt-9 rounded-2xl overflow-hidden border border-neutral-200 shadow-sm bg-white">
-          <div className="grid grid-cols-2 text-center font-display font-extrabold">
+          <div className="grid grid-cols-2 text-center font-extrabold">
             <div className="bg-red-50 text-red-700 py-3 text-sm sm:text-base border-r border-neutral-200 flex items-center justify-center gap-2">
               <XIcon size={18} sw={2.6}/> The Old Way
             </div>
@@ -167,13 +148,13 @@ function OldVsNew() {
             </div>
           </div>
           {rows.map(([label, bad, good], i) => (
-            <div key={i} className={`border-t border-neutral-200 ${i % 2 ? "bg-white" : "bg-neutral-50/60"}`}>
+            <div key={i} className="border-t border-neutral-200">
               <div className="text-[11px] uppercase tracking-widest text-neutral-400 font-bold pt-3 px-4">{label}</div>
               <div className="grid grid-cols-2">
                 <div className="px-4 py-2.5 pb-3 border-r border-neutral-200 flex items-start gap-2 text-[15px] text-neutral-500">
                   <XIcon size={16} className="text-red-400 flex-none mt-1" sw={2.6}/><span className="line-through decoration-red-300/70">{bad}</span>
                 </div>
-                <div className="px-4 py-2.5 pb-3 flex items-start gap-2 text-[15px] font-semibold text-ink">
+                <div className="px-4 py-2.5 pb-3 flex items-start gap-2 text-[15px] font-semibold text-[#0c0f0e]">
                   <Check size={16} className="text-emerald-600 flex-none mt-1" sw={2.6}/><span>{good}</span>
                 </div>
               </div>
@@ -188,65 +169,104 @@ function OldVsNew() {
 /* ── 4. VALUE STACK ── */
 function ValueStack() {
   const items = [
-    [<Snow/>,   "10× Heavy-Duty 1040ml Borosilicate Containers", "Freezer to oven, no cracks, no transfer dish", "$90"],
-    [<Lock/>,   "10× Smart-Lock Airtight Leakproof Lids",        "Four-clip silicone seal — carry soup sideways", "$30"],
-    [<Book/>,   "Bonus: “The Sunday Prep Formula” Cookbook (PDF)","Build a balanced 1040ml meal in minutes",      "$27"],
-    [<Shield/>, "Bonus: 2-Year Breakage & Lid Warranty",         "Chip, crack or lost seal? We replace it free",  "Priceless"],
+    [<Snow/>,   "10× Heavy-Duty 1040ml Borosilicate Containers on Amazon", "Freezer to oven, no cracks, no transfer dish", "$90.00", false],
+    [<Lock/>,   "10× Smart-Lock Airtight Leakproof Lids",                  "Four-clip silicone seal — carry soup sideways", "$30.00", false],
+    [<Book/>,   "BONUS: “The Sunday Prep Formula” Cookbook (PDF)",         "Claimed via email with your Amazon Order ID",   "$27.00", true],
+    [<Shield/>, "BONUS: Upgraded 2-Year Breakage & Lid-Seal Warranty",     "Claimed via email with your Amazon Order ID",   "Priceless", true],
   ];
   return (
     <section className="px-5 py-14 sm:py-20 max-w-3xl mx-auto">
-      <h2 className="font-display font-black text-center text-ink tracking-tight leading-tight text-3xl sm:text-5xl">
-        Everything you get for <span className="text-amber-500">$59.99.</span>
+      <h2 className="font-black text-center tracking-tight leading-tight text-3xl sm:text-5xl">
+        Your <span className="text-[#FF9900]">Amazon-exclusive</span> bundle.
       </h2>
-      <p className="text-center text-neutral-600 mt-3 text-[17px]">Bought separately, this stack is worth $147. One box. One price.</p>
+      <p className="text-center text-neutral-600 mt-3 text-[17px]">Order through Amazon today and the full $147 stack is yours.</p>
 
       <div className="mt-9 rounded-2xl border-2 border-neutral-900 overflow-hidden shadow-[0_18px_0_-6px_rgba(12,15,14,.12)]">
-        {items.map(([icon, name, desc, val], i) => (
-          <div key={i} className={`flex items-start gap-4 px-5 sm:px-7 py-5 ${i ? "border-t border-neutral-200" : ""}`}>
-            <div className="flex-none w-11 h-11 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center mt-0.5">
+        {items.map(([icon, name, desc, val, bonus], i) => (
+          <div key={i} className={`flex items-start gap-4 px-5 sm:px-7 py-5 ${i ? "border-t border-neutral-200" : ""} ${bonus ? "bg-orange-50/60" : ""}`}>
+            <div className={`flex-none w-11 h-11 rounded-xl flex items-center justify-center mt-0.5 ${bonus ? "bg-[#FF9900] text-[#0f1111]" : "bg-orange-100 text-orange-700"}`}>
               {React.cloneElement(icon, { size: 22 })}
             </div>
             <div className="flex-1 min-w-0">
-              <div className="font-display font-extrabold text-ink text-[17px] sm:text-lg leading-snug">{name}</div>
-              <div className="text-[15px] text-neutral-600 mt-0.5">{desc}</div>
+              <div className="font-extrabold text-[#0c0f0e] text-[16px] sm:text-lg leading-snug">{name}</div>
+              <div className="text-[14px] text-neutral-600 mt-0.5">{desc}</div>
             </div>
-            <div className="flex-none font-display font-bold text-neutral-500 text-sm sm:text-base whitespace-nowrap pt-1">{val}</div>
+            <div className="flex-none font-bold text-neutral-500 text-sm sm:text-base whitespace-nowrap pt-1">{val}</div>
           </div>
         ))}
 
         <div className="bg-neutral-900 text-white px-5 sm:px-7 py-6">
           <div className="flex items-end justify-between">
             <div>
-              <div className="text-sm text-neutral-400 line-through font-semibold">Total value $147.00</div>
-              <div className="text-amber-400 font-display font-black text-sm tracking-wider uppercase mt-1">Today you pay</div>
+              <div className="text-sm text-neutral-400 line-through font-semibold">Total real value $147.00</div>
+              <div className="text-[#FF9900] font-black text-sm tracking-wider uppercase mt-1">Today's Amazon price</div>
             </div>
-            <div className="font-display font-black text-5xl sm:text-6xl leading-none text-amber-400">$59.99</div>
+            <div className="font-black text-5xl sm:text-6xl leading-none text-[#FF9900]">$59.99</div>
           </div>
-          <CTA full className="mt-6">Secure My 10-Pack Set — $59.99 &rarr;</CTA>
-          <div className="text-center text-xs text-neutral-400 mt-3">Secure Amazon checkout · Free delivery · Ships today</div>
+          <CTA full className="mt-6">View Bundle Offer on Amazon &rarr;</CTA>
+          <div className="text-center text-xs text-neutral-400 mt-3">Secure Amazon checkout · Free Prime delivery · Ships today</div>
         </div>
+      </div>
+
+      {/* Bonus loop explainer */}
+      <div className="mt-7 grid sm:grid-cols-3 gap-3">
+        {[
+          [<Cart/>, "1. Buy on Amazon", "Tap any orange button and order the 10-pack set on Amazon for $59.99."],
+          [<Mail/>, "2. Submit your Order ID", "Come back here and drop your name, email & Amazon Order ID in the form below."],
+          [<Gift/>, "3. Unlock $147 in bonuses", "We email your cookbook PDF and activate your upgraded 2-year warranty — instantly."],
+        ].map(([icon, t, d], i) => (
+          <div key={i} className="border border-neutral-200 rounded-xl p-4 bg-white">
+            <div className="w-9 h-9 rounded-lg bg-orange-100 text-orange-700 flex items-center justify-center">{React.cloneElement(icon, { size: 18 })}</div>
+            <div className="font-extrabold text-[#0c0f0e] mt-2.5 text-[15px]">{t}</div>
+            <div className="text-[13px] text-neutral-600 mt-1 leading-relaxed">{d}</div>
+          </div>
+        ))}
       </div>
     </section>
   );
 }
 
-/* ── 5. GUARANTEE ── */
-function Guarantee() {
+/* ── 5. ORDER VERIFICATION ── */
+function Verify() {
+  const [f, setF] = useState({ name: "", email: "", order: "" });
+  const [done, setDone] = useState(false);
+  const submit = (e) => {
+    e.preventDefault();
+    if (!f.name || !f.email || !f.order) return;
+    // NOTE: wire to your backend/ESP to validate Order IDs and email the bonuses.
+    try { localStorage.setItem("hollis_order_claim", JSON.stringify(f)); } catch (_) {}
+    setDone(true);
+  };
   return (
-    <section className="px-5 pb-14 sm:pb-20">
-      <div className="max-w-3xl mx-auto rounded-2xl bg-emerald-600 text-white p-7 sm:p-10 flex flex-col sm:flex-row items-center gap-7 text-center sm:text-left shadow-xl">
-        <div className="flex-none w-28 h-28 rounded-full border-2 border-white/40 flex flex-col items-center justify-center">
-          <Shield size={34} className="text-white" sw={1.8}/>
-          <span className="font-display font-black text-lg mt-1 leading-none">2-YR</span>
-        </div>
-        <div>
-          <h2 className="font-display font-black text-2xl sm:text-3xl tracking-tight">The 2-Year “No-Crack, No-Leak” Guarantee</h2>
-          <p className="mt-2.5 text-emerald-50 text-[16px] leading-relaxed">
-            If any container chips or cracks, or any lid loses its seal within 24 months of normal kitchen use,
-            we ship you a replacement <strong className="text-white">free</strong>. No drama, no fine print, no risk.
-            You decide at your bench — not at checkout.
-          </p>
-        </div>
+    <section className="px-5 pb-16">
+      <div className="max-w-xl mx-auto bg-white border-2 border-emerald-500 rounded-2xl p-6 sm:p-8 shadow-[0_18px_0_-6px_rgba(16,185,129,.18)]">
+        {!done ? (
+          <>
+            <div className="flex items-center gap-2.5">
+              <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center flex-none"><Gift size={20}/></div>
+              <h2 className="font-black text-xl sm:text-2xl tracking-tight">Already ordered on Amazon? Claim your bonuses.</h2>
+            </div>
+            <p className="text-[15px] text-neutral-600 mt-3">Enter your details and Amazon Order ID — we'll email your cookbook PDF and activate your upgraded 2-year warranty.</p>
+            <form onSubmit={submit} className="mt-5 space-y-3">
+              <input required placeholder="First name" value={f.name} onChange={e => setF({ ...f, name: e.target.value })}
+                     className="w-full border-2 border-neutral-300 focus:border-emerald-500 outline-none rounded-lg px-4 py-3 text-[16px]"/>
+              <input required type="email" placeholder="Email address" value={f.email} onChange={e => setF({ ...f, email: e.target.value })}
+                     className="w-full border-2 border-neutral-300 focus:border-emerald-500 outline-none rounded-lg px-4 py-3 text-[16px]"/>
+              <input required placeholder="Amazon Order ID (e.g. 249-1234567-1234567)" value={f.order} onChange={e => setF({ ...f, order: e.target.value })}
+                     className="w-full border-2 border-neutral-300 focus:border-emerald-500 outline-none rounded-lg px-4 py-3 text-[16px]"/>
+              <button type="submit" className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold rounded-lg px-5 py-4 text-lg transition-colors">
+                Verify Order &amp; Unlock My Bonuses &rarr;
+              </button>
+            </form>
+            <p className="text-[11px] text-neutral-400 mt-3 text-center">We only use your details to deliver your bonuses. No spam, ever.</p>
+          </>
+        ) : (
+          <div className="text-center py-4">
+            <div className="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto"><Check size={28} sw={2.6}/></div>
+            <h2 className="font-black text-2xl mt-4">You're verified, {f.name}!</h2>
+            <p className="text-[15px] text-neutral-600 mt-2">Your cookbook PDF and 2-year warranty confirmation are on their way to <strong className="text-[#0c0f0e]">{f.email}</strong>. Check your inbox in the next few minutes.</p>
+          </div>
+        )}
       </div>
     </section>
   );
@@ -263,27 +283,22 @@ function FAQ() {
      "Built for it. Each container is roughly 20cm × 15cm × 7cm — sized for standard Australian fridge shelves — and the flat lids let you stack two or three high without the lean-and-topple of round tubs."],
     ["Are the lids genuinely leakproof, or just snug?",
      "Genuinely leakproof. Four independent clips compress a silicone gasket around the entire rim — you feel each one lock. Soup, curry, dressing: it stays sealed in the container, not in your bag."],
-    ["Are they dishwasher and microwave safe?",
-     "Both. Glass and lids go on the top or bottom rack of the dishwasher. For the microwave, pop the vent on the lid or take it off. Borosilicate won't cloud, stain or absorb odours the way plastic does."],
-    ["How does the 2-year warranty claim work?",
-     "If something chips, cracks or stops sealing under normal use within 24 months, contact us with your order number and we send a free replacement. Plus Amazon's standard return window covers you from day one."],
+    ["How do I get the bonuses after I buy on Amazon?",
+     "Order the set on Amazon, then come back to the green form on this page. Enter your name, email and Amazon Order ID — we email your cookbook PDF and activate your upgraded 2-year warranty straight away."],
   ];
   const [open, setOpen] = useState(0);
   return (
     <section className="px-5 py-14 sm:py-20 bg-neutral-50 border-t border-neutral-200">
       <div className="max-w-3xl mx-auto">
-        <h2 className="font-display font-black text-center text-ink tracking-tight leading-tight text-3xl sm:text-5xl">
-          Straight answers, no fluff.
-        </h2>
+        <h2 className="font-black text-center tracking-tight leading-tight text-3xl sm:text-5xl">Straight answers, no fluff.</h2>
         <div className="mt-9 space-y-3">
           {data.map(([q, a], i) => {
             const isOpen = open === i;
             return (
               <div key={i} className="bg-white border border-neutral-200 rounded-xl overflow-hidden">
-                <button onClick={() => setOpen(isOpen ? -1 : i)}
-                        className="w-full flex items-center justify-between gap-4 text-left px-5 py-4">
-                  <span className="font-display font-bold text-ink text-[16px] sm:text-[17px] leading-snug">{q}</span>
-                  <Chevron size={20} className={`flex-none text-amber-500 transition-transform ${isOpen ? "rotate-180" : ""}`}/>
+                <button onClick={() => setOpen(isOpen ? -1 : i)} className="w-full flex items-center justify-between gap-4 text-left px-5 py-4">
+                  <span className="font-bold text-[#0c0f0e] text-[16px] sm:text-[17px] leading-snug">{q}</span>
+                  <Chevron size={20} className={`flex-none text-[#FF9900] transition-transform ${isOpen ? "rotate-180" : ""}`}/>
                 </button>
                 <div className="acc-body px-5" style={{ maxHeight: isOpen ? 320 : 0, opacity: isOpen ? 1 : 0 }}>
                   <p className="pb-5 text-[15px] text-neutral-600 leading-relaxed">{a}</p>
@@ -300,55 +315,29 @@ function FAQ() {
 /* ── 7. FINAL CTA ── */
 function Final() {
   return (
-    <section className="bg-ink text-white text-center px-5 py-16 sm:py-24">
-      <h2 className="font-display font-black tracking-tight leading-[0.98] text-4xl sm:text-6xl max-w-3xl mx-auto">
-        Prep once. Eat right all week.
-      </h2>
-      <p className="text-neutral-400 mt-4 text-[17px]">Ten containers. One Sunday. Zero leaks. Backed for two years.</p>
-      <div className="mt-8 max-w-md mx-auto"><CTA full>Secure My 10-Pack Set — $59.99 &rarr;</CTA></div>
-      <div className="text-neutral-500 text-xs mt-3">Capped at 400 sets this run · Free delivery · Ships today</div>
+    <section className="bg-[#0c0f0e] text-white text-center px-5 py-16 sm:py-24">
+      <h2 className="font-black tracking-tight leading-[0.98] text-4xl sm:text-6xl max-w-3xl mx-auto">Prep once. Eat right all week.</h2>
+      <p className="text-neutral-400 mt-4 text-[17px]">Ten containers. One Sunday. Zero leaks. $147 in bonuses when you order today.</p>
+      <div className="mt-8 max-w-md mx-auto"><CTA full>View Bundle Offer on Amazon — $59.99 &rarr;</CTA></div>
+      <div className="text-neutral-500 text-xs mt-3">Capped at 400 sets this run · Free Prime delivery · Ships today</div>
     </section>
   );
 }
 
-/* ── 8. REFERRAL ── */
-function Referral() {
-  return (
-    <section className="bg-amber-50 border-t border-amber-200 px-5 py-12">
-      <div className="max-w-2xl mx-auto flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
-        <div className="flex-none w-14 h-14 rounded-2xl bg-amber-500 text-ink flex items-center justify-center">
-          <Gift size={28} sw={2.1}/>
-        </div>
-        <div className="flex-1">
-          <h3 className="font-display font-black text-xl text-ink">Give $10, Get $10.</h3>
-          <p className="text-[15px] text-neutral-700 mt-1">
-            Know a gym partner or housemate who lives on meal prep? Send them $10 off their set and pocket $10 toward your next order. Everyone eats better.
-          </p>
-        </div>
-        <a href={AMAZON} target="_blank" rel="noopener"
-           className="flex-none font-display font-bold text-amber-700 underline decoration-2 underline-offset-4 hover:text-amber-900">
-          Share &amp; earn &rarr;
-        </a>
-      </div>
-    </section>
-  );
-}
-
-/* ── Sticky bottom CTA (appears after hero) ── */
+/* ── Sticky bottom CTA ── */
 function Sticky({ show }) {
   return (
     <div className={`fixed bottom-0 inset-x-0 z-40 bg-white border-t border-neutral-200 shadow-[0_-8px_24px_-8px_rgba(0,0,0,.18)]
                      px-4 py-2.5 flex items-center justify-between gap-3 transition-transform duration-200
                      ${show ? "translate-y-0" : "translate-y-full"}`}>
       <div className="leading-none">
-        <span className="font-display font-black text-xl text-ink">$59.99</span>
+        <span className="font-black text-xl text-[#0c0f0e]">$59.99</span>
         <span className="text-xs text-neutral-400 line-through ml-1.5 font-semibold">$147</span>
-        <span className="hidden xs:block text-[10px] uppercase tracking-widest text-neutral-500 font-bold mt-0.5">10-Pack Kit</span>
+        <span className="hidden xs:block text-[10px] uppercase tracking-widest text-neutral-500 font-bold mt-0.5">On Amazon</span>
       </div>
-      <a href={AMAZON} target="_blank" rel="noopener"
-         className="flex-1 max-w-xs text-center bg-amber-500 hover:bg-amber-400 active:bg-amber-600 text-ink
-                    font-display font-extrabold rounded-lg px-5 py-3.5">
-        Secure My 10-Pack Set &rarr;
+      <a href={AMAZON} target="_blank" rel="noopener" style={{ backgroundColor: ORANGE }}
+         className="flex-1 max-w-xs text-center text-[#0f1111] font-extrabold rounded-lg px-5 py-3.5 inline-flex items-center justify-center gap-2">
+        <Cart size={18} sw={2.4}/> View Offer on Amazon &rarr;
       </a>
     </div>
   );
@@ -356,50 +345,43 @@ function Sticky({ show }) {
 
 /* ── Exit-intent lead magnet ── */
 function ExitModal({ open, onClose }) {
-  const [email, setEmail] = useState("");
+  const [f, setF] = useState({ name: "", email: "" });
   const [done, setDone] = useState(false);
   if (!open) return null;
   const submit = (e) => {
     e.preventDefault();
-    if (!email) return;
-    // NOTE: wire this to your email tool (Mailchimp/Klaviyo/Formspree). For now it records locally.
-    try { localStorage.setItem("hollis_lead", email); } catch (_) {}
+    if (!f.name || !f.email) return;
+    try { localStorage.setItem("hollis_lead", JSON.stringify(f)); } catch (_) {}
     setDone(true);
   };
   return (
-    <div className="fixed inset-0 z-50 bg-ink/70 flex items-center justify-center p-4" onClick={onClose}>
-      <div className="modal-card bg-white rounded-2xl max-w-md w-full p-7 sm:p-8 relative text-center"
-           onClick={(e) => e.stopPropagation()}>
-        <button onClick={onClose} aria-label="Close"
-                className="absolute top-3.5 right-3.5 text-neutral-400 hover:text-ink"><XIcon size={22}/></button>
+    <div className="fixed inset-0 z-50 bg-[#0c0f0e]/70 flex items-center justify-center p-4" onClick={onClose}>
+      <div className="modal-card bg-white rounded-2xl max-w-md w-full p-7 sm:p-8 relative text-center" onClick={e => e.stopPropagation()}>
+        <button onClick={onClose} aria-label="Close" className="absolute top-3.5 right-3.5 text-neutral-400 hover:text-[#0c0f0e]"><XIcon size={22}/></button>
         {!done ? (
           <>
-            <div className="w-14 h-14 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center mx-auto">
-              <Book size={26}/>
-            </div>
-            <h3 className="font-display font-black text-2xl text-ink mt-4 leading-tight">Not buying today? Steal our system free.</h3>
+            <div className="w-14 h-14 rounded-2xl bg-orange-100 text-orange-700 flex items-center justify-center mx-auto"><Book size={26}/></div>
+            <h3 className="font-black text-2xl mt-4 leading-tight">Not ready to buy on Amazon yet?</h3>
             <p className="text-[15px] text-neutral-600 mt-2.5">
-              Get <strong className="text-ink">The 7-Day Sunday Prep Blueprint</strong> — the exact plan to cook one afternoon and eat sorted all week. Sent straight to your inbox.
+              Grab <strong className="text-[#0c0f0e]">The 7-Day Sunday Prep Blueprint (PDF)</strong> free — the exact plan to cook one afternoon and eat sorted all week.
             </p>
             <form onSubmit={submit} className="mt-5 space-y-2.5">
-              <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)}
-                     placeholder="Your best email"
-                     className="w-full border-2 border-neutral-300 focus:border-amber-500 outline-none rounded-lg px-4 py-3 text-[16px]"/>
-              <button type="submit"
-                      className="w-full bg-amber-500 hover:bg-amber-400 text-ink font-display font-extrabold rounded-lg px-5 py-3.5 text-lg">
+              <input required placeholder="First name" value={f.name} onChange={e => setF({ ...f, name: e.target.value })}
+                     className="w-full border-2 border-neutral-300 focus:border-[#FF9900] outline-none rounded-lg px-4 py-3 text-[16px]"/>
+              <input required type="email" placeholder="Your best email" value={f.email} onChange={e => setF({ ...f, email: e.target.value })}
+                     className="w-full border-2 border-neutral-300 focus:border-[#FF9900] outline-none rounded-lg px-4 py-3 text-[16px]"/>
+              <button type="submit" style={{ backgroundColor: ORANGE }} className="w-full text-[#0f1111] font-extrabold rounded-lg px-5 py-3.5 text-lg hover:brightness-105 transition">
                 Send Me The Blueprint &rarr;
               </button>
             </form>
-            <p className="text-[11px] text-neutral-400 mt-3">No spam. Unsubscribe anytime. We'll never share your details.</p>
+            <p className="text-[11px] text-neutral-400 mt-3">No spam. Unsubscribe anytime.</p>
           </>
         ) : (
           <>
-            <div className="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto">
-              <Check size={28} sw={2.6}/>
-            </div>
-            <h3 className="font-display font-black text-2xl text-ink mt-4">You're in. Check your inbox.</h3>
-            <p className="text-[15px] text-neutral-600 mt-2.5">The 7-Day Sunday Prep Blueprint is on its way. While you're here —</p>
-            <div className="mt-5"><CTA full>Get My 10-Pack Bundle — $59.99 &rarr;</CTA></div>
+            <div className="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto"><Check size={28} sw={2.6}/></div>
+            <h3 className="font-black text-2xl mt-4">You're in, {f.name}.</h3>
+            <p className="text-[15px] text-neutral-600 mt-2.5">The Blueprint is on its way to your inbox. While you're here —</p>
+            <div className="mt-5"><CTA full>View Bundle Offer on Amazon &rarr;</CTA></div>
           </>
         )}
       </div>
@@ -415,7 +397,6 @@ function App() {
   const firedRef = useRef(false);
 
   useEffect(() => {
-    // Sticky CTA after hero
     const onScroll = () => {
       const h = heroRef.current ? heroRef.current.offsetHeight : 600;
       setShowSticky(window.scrollY > h * 0.8);
@@ -423,7 +404,6 @@ function App() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
 
-    // Exit intent — desktop: cursor leaves top
     const fire = () => {
       if (firedRef.current) return;
       try { if (sessionStorage.getItem("hollis_exit")) return; } catch (_) {}
@@ -434,11 +414,10 @@ function App() {
     const onMouseOut = (e) => { if (e.clientY <= 0 && !e.relatedTarget) fire(); };
     document.addEventListener("mouseout", onMouseOut);
 
-    // Exit intent — mobile: fast scroll up near the top
     let lastY = window.scrollY, lastT = Date.now();
     const onScrollExit = () => {
       const y = window.scrollY, t = Date.now();
-      const v = (lastY - y) / Math.max(1, t - lastT); // px per ms upward
+      const v = (lastY - y) / Math.max(1, t - lastT);
       if (v > 1.1 && y < 400 && lastY > 500) fire();
       lastY = y; lastT = t;
     };
@@ -457,14 +436,11 @@ function App() {
       <Hero heroRef={heroRef} />
       <OldVsNew />
       <ValueStack />
-      <Guarantee />
+      <Verify />
       <FAQ />
       <Final />
-      <Referral />
-      <footer className="bg-ink text-center px-5 py-7 pb-24">
-        <p className="text-[12px] text-neutral-500 leading-relaxed">
-          © 2025 Hollis Enterprises · Australian owned · 1040ml Borosilicate Glass Meal Prep Containers
-        </p>
+      <footer className="bg-[#0c0f0e] text-center px-5 py-7 pb-24">
+        <p className="text-[12px] text-neutral-500 leading-relaxed">© 2025 Hollis Enterprises · Australian owned · 1040ml Borosilicate Glass Meal Prep Containers</p>
       </footer>
       <Sticky show={showSticky} />
       <ExitModal open={exitOpen} onClose={() => setExitOpen(false)} />
