@@ -172,14 +172,14 @@ function ValueStack() {
     [<Snow/>,   "10× Heavy-Duty 1040ml Borosilicate Containers on Amazon", "Freezer to oven, no cracks, no transfer dish", "$90.00", false],
     [<Lock/>,   "10× Smart-Lock Airtight Leakproof Lids",                  "Four-clip silicone seal — carry soup sideways", "$30.00", false],
     [<Book/>,   "BONUS: “The Sunday Prep Formula” Cookbook (PDF)",         "Claimed via email with your Amazon Order ID",   "$27.00", true],
-    [<Shield/>, "BONUS: Upgraded 2-Year Breakage & Lid-Seal Warranty",     "Claimed via email with your Amazon Order ID",   "Priceless", true],
+    [<Shield/>, "BONUS: Upgraded 2-Year Breakage & Lid-Seal Warranty",     "Claimed via email with your Amazon Order ID",   "$60.00", true],
   ];
   return (
     <section className="px-5 py-14 sm:py-20 max-w-3xl mx-auto">
       <h2 className="font-black text-center tracking-tight leading-tight text-3xl sm:text-5xl">
         Your <span className="text-[#FF9900]">Amazon-exclusive</span> bundle.
       </h2>
-      <p className="text-center text-neutral-600 mt-3 text-[17px]">Order through Amazon today and the full $147 stack is yours.</p>
+      <p className="text-center text-neutral-600 mt-3 text-[17px]">Order through Amazon today and the full $207 stack is yours.</p>
 
       <div className="mt-9 rounded-2xl border-2 border-neutral-900 overflow-hidden shadow-[0_18px_0_-6px_rgba(12,15,14,.12)]">
         {items.map(([icon, name, desc, val, bonus], i) => (
@@ -198,7 +198,7 @@ function ValueStack() {
         <div className="bg-neutral-900 text-white px-5 sm:px-7 py-6">
           <div className="flex items-end justify-between">
             <div>
-              <div className="text-sm text-neutral-400 line-through font-semibold">Total real value $147.00</div>
+              <div className="text-sm text-neutral-400 line-through font-semibold">Total real value $207.00</div>
               <div className="text-[#FF9900] font-black text-sm tracking-wider uppercase mt-1">Today's Amazon price</div>
             </div>
             <div className="font-black text-5xl sm:text-6xl leading-none text-[#FF9900]">$59.99</div>
@@ -233,8 +233,9 @@ function Verify() {
   const submit = (e) => {
     e.preventDefault();
     if (!f.name || !f.email || !f.order) return;
-    // NOTE: wire to your backend/ESP to validate Order IDs and email the bonuses.
-    try { localStorage.setItem("hollis_order_claim", JSON.stringify(f)); } catch (_) {}
+    const subject = encodeURIComponent(`Hollis Bonus Claim – Order ${f.order}`);
+    const body = encodeURIComponent(`Name: ${f.name}\nEmail: ${f.email}\nAmazon Order ID: ${f.order}`);
+    window.open(`mailto:hollisenterprises@outlook.com.au?subject=${subject}&body=${body}`);
     setDone(true);
   };
   return (
@@ -317,7 +318,7 @@ function Final() {
   return (
     <section className="bg-[#0c0f0e] text-white text-center px-5 py-16 sm:py-24">
       <h2 className="font-black tracking-tight leading-[0.98] text-4xl sm:text-6xl max-w-3xl mx-auto">Prep once. Eat right all week.</h2>
-      <p className="text-neutral-400 mt-4 text-[17px]">Ten containers. One Sunday. Zero leaks. $147 in bonuses when you order today.</p>
+      <p className="text-neutral-400 mt-4 text-[17px]">Ten containers. One Sunday. Zero leaks. $87 in bonuses when you order today.</p>
       <div className="mt-8 max-w-md mx-auto"><CTA full>View Bundle Offer on Amazon — $59.99 &rarr;</CTA></div>
       <div className="text-neutral-500 text-xs mt-3">Capped at 400 sets this run · Free Prime delivery · Ships today</div>
     </section>
@@ -351,7 +352,9 @@ function ExitModal({ open, onClose }) {
   const submit = (e) => {
     e.preventDefault();
     if (!f.name || !f.email) return;
-    try { localStorage.setItem("hollis_lead", JSON.stringify(f)); } catch (_) {}
+    const subject = encodeURIComponent('7-Day Blueprint Request');
+    const body = encodeURIComponent(`Name: ${f.name}\nEmail: ${f.email}`);
+    window.open(`mailto:hollisenterprises@outlook.com.au?subject=${subject}&body=${body}`);
     setDone(true);
   };
   return (
