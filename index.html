@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>10-Pack 1040ml Borosilicate Glass Meal Prep Containers — On Amazon $59.99</title>
 <meta name="description" content="The last meal prep containers you'll ever buy. 10 leakproof 1040ml borosilicate glass containers on Amazon — oven, microwave, freezer & dishwasher safe. Order on Amazon and unlock your $87 bonus bundle.">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hollisenterprises-boop.github.io/Containers-website/">
+<meta property="og:title" content="The Last Meal Prep Containers You Will Ever Buy">
+<meta property="og:description" content="10-Pack Borosilicate Glass Set. 100% Leakproof. 2-Year Warranty.">
+<meta property="og:image" content="https://hollisenterprises-boop.github.io/Containers-website/img/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Last Meal Prep Containers You Will Ever Buy">
+<meta name="twitter:description" content="10-Pack Borosilicate Glass Set. 100% Leakproof. 2-Year Warranty.">
+<meta name="twitter:image" content="https://hollisenterprises-boop.github.io/Containers-website/img/hero.jpg">
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   html{ -webkit-text-size-adjust:100%; }
@@ -70,7 +80,7 @@ function Banner() {
     <div className="bg-[#0c0f0e] text-[#FF9900] text-center text-[12.5px] sm:text-sm font-semibold px-4 py-2.5
                     flex items-center justify-center gap-2 leading-tight">
       <Warn size={16} className="flex-none" sw={2.4} />
-      <span><span className="text-white">Amazon stock alert:</span> high Sunday-prep demand — this run is capped at 400 total sets. Next batch ships in 8 weeks.</span>
+      <span><span className="text-white">Production alert:</span> batch run limited to 400 sets due to borosilicate kiln schedules — next window is 8 weeks away.</span>
     </div>
   );
 }
@@ -88,8 +98,8 @@ function Hero({ heroRef }) {
             The last meal prep containers you'll ever buy. <span className="text-[#FF9900]">Period.</span>
           </h1>
           <p className="mt-5 text-[17px] sm:text-xl text-neutral-700 leading-relaxed max-w-xl">
-            10&times; premium 1040ml borosilicate glass containers. 100% leakproof. Oven, microwave &amp; dishwasher safe.
-            Grab our exclusive bundle on Amazon today and unlock <strong className="text-[#0c0f0e]">$87 in free digital bonuses</strong>.
+            Stop scrubbing tomato stains off warped plastic. These 10 borosilicate containers go from -20°C to 400°C without cracking, stack 2-high on standard fridge shelves, and seal tight enough to carry soup sideways.
+            Order on Amazon today and unlock <strong className="text-[#0c0f0e]">$87 in free digital bonuses</strong>.
           </p>
           <div className="mt-7">
             <CTA full className="sm:w-auto">View Bundle Offer on Amazon — $59.99 &rarr;</CTA>
@@ -104,11 +114,14 @@ function Hero({ heroRef }) {
             <div className="mt-2 flex items-center gap-1.5 text-sm text-neutral-600">
               <Truck size={16} className="text-emerald-600"/> Free Prime delivery · In stock · Ships today
             </div>
+            <div className="mt-2.5 inline-flex items-center gap-1.5 border border-emerald-400 bg-emerald-50 text-emerald-800 text-[12px] font-bold px-3 py-1.5 rounded-full">
+              <Shield size={13} sw={2.5}/> 2-Year Breakage &amp; Lid-Seal Warranty Included
+            </div>
           </div>
         </div>
-        <div className="relative">
+        <div className="relative bg-neutral-100 rounded-2xl">
           <img src="img/hero.jpg" alt="Ten 1040ml borosilicate glass meal prep containers stacked and filled with prepared meals"
-               className="w-full aspect-square object-cover rounded-2xl shadow-2xl border border-neutral-200" loading="eager"/>
+               className="w-full aspect-square object-cover rounded-2xl shadow-2xl border border-neutral-200 bg-neutral-100" loading="eager"/>
           <div className="absolute -bottom-4 -left-3 sm:-left-5 bg-white rounded-xl shadow-xl border border-neutral-200 px-5 py-3">
             <div className="font-black text-3xl text-[#0c0f0e] leading-none">$59.99</div>
             <div className="text-[11px] uppercase tracking-widest text-neutral-500 mt-1 font-semibold">10 containers + lids</div>
@@ -173,7 +186,7 @@ function ValueStack() {
     [<Snow/>,   "10× Heavy-Duty 1040ml Borosilicate Containers on Amazon", "Freezer to oven, no cracks, no transfer dish", "$90.00", false],
     [<Lock/>,   "10× Smart-Lock Airtight Leakproof Lids",                  "Four-clip silicone seal — carry soup sideways", "$30.00", false],
     [<Book/>,   "BONUS: “The Sunday Prep Formula” Cookbook (PDF)",         "Claimed via email with your Amazon Order ID",   "$27.00", true],
-    [<Shield/>, "BONUS: Upgraded 2-Year Breakage & Lid-Seal Warranty",     "Claimed via email with your Amazon Order ID",   "$60.00", true],
+    [<Shield/>, "BONUS: Upgraded 2-Year Breakage & Lid-Seal Warranty",     "Full breakage & lid-seal protection for 24 months. Claimed with your Order ID.",   "$60.00", true],
   ];
   return (
     <section className="px-5 py-14 sm:py-20 max-w-3xl mx-auto">
@@ -204,7 +217,19 @@ function ValueStack() {
             </div>
             <div className="font-black text-5xl sm:text-6xl leading-none text-[#FF9900]">$59.99</div>
           </div>
-          <CTA full className="mt-6">View Bundle Offer on Amazon &rarr;</CTA>
+          <div className="flex items-center gap-3 mt-5 pt-4 border-t border-neutral-700">
+            <div className="flex-none w-11 h-11 rounded-full border-2 border-emerald-500 bg-emerald-900/20 flex items-center justify-center">
+              <Shield size={20} className="text-emerald-400"/>
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="text-emerald-400 font-black text-[13px] uppercase tracking-wide leading-tight">2-Year Official Warranty</div>
+              <div className="text-neutral-400 text-[11px] mt-0.5 leading-snug">Full breakage &amp; lid-seal protection · Registered on purchase</div>
+            </div>
+            <div className="hidden sm:flex flex-col items-center justify-center w-12 h-12 rounded-full border border-neutral-600 flex-none">
+              <div className="text-[8px] text-neutral-500 uppercase tracking-widest font-black text-center leading-tight">Hollis<br/>Cert.</div>
+            </div>
+          </div>
+          <CTA full className="mt-4">View Bundle Offer on Amazon &rarr;</CTA>
           <div className="text-center text-xs text-neutral-400 mt-3">Secure Amazon checkout · Free Prime delivery · Ships today</div>
         </div>
       </div>
@@ -323,8 +348,8 @@ function FAQ() {
 function Final() {
   return (
     <section className="bg-[#0c0f0e] text-white text-center px-5 py-16 sm:py-24">
-      <h2 className="font-black tracking-tight leading-[0.98] text-4xl sm:text-6xl max-w-3xl mx-auto">Prep once. Eat right all week.</h2>
-      <p className="text-neutral-400 mt-4 text-[17px]">Ten containers. One Sunday. Zero leaks. $87 in bonuses when you order today.</p>
+      <h2 className="font-black tracking-tight leading-[0.98] text-4xl sm:text-6xl max-w-3xl mx-auto">Sunday prep, sorted. For the next decade.</h2>
+      <p className="text-neutral-400 mt-4 text-[17px]">Ten containers. One prep session. Zero leaks, stains, or microwave-warped lids. $87 in bonuses when you order today.</p>
       <div className="mt-8 max-w-md mx-auto"><CTA full>View Bundle Offer on Amazon — $59.99 &rarr;</CTA></div>
       <div className="text-neutral-500 text-xs mt-3">Capped at 400 sets this run · Free Prime delivery · Ships today</div>
     </section>
@@ -453,8 +478,11 @@ function App() {
       <Verify />
       <FAQ />
       <Final />
-      <footer className="bg-[#0c0f0e] text-center px-5 py-7 pb-24">
-        <p className="text-[12px] text-neutral-500 leading-relaxed">© 2025 Hollis Enterprises · Australian owned · 1040ml Borosilicate Glass Meal Prep Containers</p>
+      <footer className="bg-[#0c0f0e] text-center px-5 pt-8 pb-24 border-t border-neutral-800">
+        <div className="max-w-2xl mx-auto mb-5 text-[11px] text-neutral-500 leading-relaxed border border-neutral-800 rounded-lg px-4 py-3 bg-neutral-900/60">
+          <p>As an Amazon Associate, I earn from qualifying purchases. This site is not a part of the Facebook website or Facebook Inc. Additionally, This site is NOT endorsed by Facebook in any way.</p>
+        </div>
+        <p className="text-[12px] text-neutral-500 leading-relaxed">© 2026 Hollis Enterprises · Australian owned · 1040ml Borosilicate Glass Meal Prep Containers</p>
       </footer>
       <Sticky show={showSticky} />
       <ExitModal open={exitOpen} onClose={() => setExitOpen(false)} />
