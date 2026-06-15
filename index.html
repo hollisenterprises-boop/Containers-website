@@ -213,7 +213,7 @@ function ProofSection() {
           {photos.map(([src, alt], i) => (
             <div key={i} className="flex-none w-56 sm:w-64 lg:w-auto aspect-square rounded-xl overflow-hidden bg-neutral-100">
               <img src={src} alt={alt} loading="lazy" className="w-full h-full object-cover bg-neutral-100"
-                   onError={e => { e.currentTarget.parentElement.style.display="none"; }}/>
+                   onError={e => { e.currentTarget.parentElement.style.display='none'; }}/>
             </div>
           ))}
         </div>
@@ -233,10 +233,10 @@ function ProofSection() {
 /* ── 5. VALUE STACK ── */
 function ValueStack() {
   const items = [
-    [<Snow/>,   “10× Heavy-Duty 1040ml Borosilicate Containers”, “Freezer to oven, no cracks, no transfer dish”,              null,         false],
-    [<Lock/>,   “10× Smart-Lock Airtight Leakproof Lids”,        “Four-clip silicone seal — carry soup sideways”,              null,         false],
-    [<Book/>,   “BONUS: “The Sunday Prep Formula” Cookbook (PDF)”, “Claimed via email with your Amazon Order ID”,    “$27 value”,  true],
-    [<Shield/>, “BONUS: Upgraded 2-Year Breakage & Lid-Seal Warranty”,  “Full breakage & lid-seal protection for 24 months. Claimed with your Order ID.”, “$60 value”, true],
+    [<Snow/>,   "10× Heavy-Duty 1040ml Borosilicate Containers", "Freezer to oven, no cracks, no transfer dish",              null,         false],
+    [<Lock/>,   "10× Smart-Lock Airtight Leakproof Lids",        "Four-clip silicone seal — carry soup sideways",              null,         false],
+    [<Book/>,   "BONUS: \u201cThe Sunday Prep Formula\u201d Cookbook (PDF)", "Claimed via email with your Amazon Order ID",    "$27 value",  true],
+    [<Shield/>, "BONUS: Upgraded 2-Year Breakage & Lid-Seal Warranty",  "Full breakage & lid-seal protection for 24 months. Claimed with your Order ID.", "$60 value", true],
   ];
   return (
     <section className="px-5 py-14 sm:py-20 max-w-3xl mx-auto">
