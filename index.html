@@ -32,11 +32,23 @@
 <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script type="text/babel" data-presets="react">
 const { useState, useEffect, useRef } = React;
 const AMAZON = "https://www.amazon.com.au/dp/B0G5HH4Z1F";
 const ORANGE = "#FF9900";
 const FORMSPREE = "https://formspree.io/f/mnjylnqq";
+// EmailJS — sends automatic confirmation email to the customer.
+// Setup (free, ~10 min): emailjs.com → add Outlook service → create template with vars:
+//   to_name, to_email, order_id (for Verify) | to_name, to_email (for ExitModal)
+// Then replace the three placeholders below.
+const EJS_KEY = "YOUR_EMAILJS_PUBLIC_KEY";
+const EJS_SVC = "YOUR_EMAILJS_SERVICE_ID";
+const EJS_TPL_CLAIM = "YOUR_CLAIM_TEMPLATE_ID";   // sent to customer on bonus claim
+const EJS_TPL_LEAD  = "YOUR_LEAD_TEMPLATE_ID";    // sent to customer on blueprint request
+if (typeof emailjs !== "undefined" && EJS_KEY !== "YOUR_EMAILJS_PUBLIC_KEY") {
+  emailjs.init({ publicKey: EJS_KEY });
+}
 
 /* ── Lucide-style icons (inline SVG, no bundler needed) ── */
 const Ic = ({ children, size = 24, className = "", sw = 2, fill = "none" }) => (
@@ -104,12 +116,11 @@ function Hero({ heroRef }) {
           <div className="mt-7">
             <CTA full className="sm:w-auto">View Bundle Offer on Amazon — $59.99 &rarr;</CTA>
             <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
-              <span className="flex text-[#FF9900]"><Star/><Star/><Star/><Star/><Star/></span>
-              <span className="font-bold text-[#0c0f0e]">4.9/5 Rating</span>
+              <span className="font-bold text-[#0c0f0e]">Borosilicate Grade</span>
               <span className="text-neutral-300">|</span>
-              <span className="text-neutral-600">1,420+ Verified Preppers</span>
+              <span className="text-neutral-600">0% Lid-Failure Reports</span>
               <span className="text-neutral-300">|</span>
-              <span className="text-neutral-600">Available on Amazon Prime</span>
+              <span className="text-neutral-600">Australian Owned</span>
             </div>
             <div className="mt-2 flex items-center gap-1.5 text-sm text-neutral-600">
               <Truck size={16} className="text-emerald-600"/> Free Prime delivery · In stock · Ships today
@@ -180,20 +191,58 @@ function OldVsNew() {
   );
 }
 
-/* ── 4. VALUE STACK ── */
+/* ── 4. PROOF: Gallery + Dimensions ── */
+function ProofSection() {
+  const photos = [
+    ["img/lifestyle-1.jpg", "Hollis containers arranged with fresh meal prep ingredients"],
+    ["img/lifestyle-2.jpg", "Hollis containers stacked on a fridge shelf"],
+    ["img/05.jpg",          "Single 1040ml Hollis container with Smart-Lock lid closed"],
+    ["img/06.jpg",          "Hollis glass container filled with a prepped meal"],
+    ["img/03.jpg",          "10-piece Hollis set laid out on a bench"],
+  ];
+  const specs = [
+    ["20 × 15 × 7 cm", "Per container — fits standard AU fridge shelves"],
+    ["1040 ml",         "One full meal per container, 10 in the set"],
+    ["Stacks 2-high",   "Flat lids, no lean or topple on narrow shelves"],
+  ];
+  return (
+    <section className="py-10 sm:py-14">
+      <div className="overflow-x-auto px-5 pb-3" style={{ scrollbarWidth: "none" }}>
+        <div className="flex gap-3 w-max lg:w-auto lg:grid lg:grid-cols-5 lg:max-w-6xl lg:mx-auto">
+          {photos.map(([src, alt], i) => (
+            <div key={i} className="flex-none w-56 sm:w-64 lg:w-auto aspect-square rounded-xl overflow-hidden bg-neutral-100">
+              <img src={src} alt={alt} loading="lazy" className="w-full h-full object-cover bg-neutral-100"
+                   onError={e => { e.currentTarget.parentElement.style.display="none"; }}/>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="mt-6 px-5 max-w-3xl mx-auto grid grid-cols-3 gap-3">
+        {specs.map(([num, label], i) => (
+          <div key={i} className="bg-neutral-50 border border-neutral-200 rounded-xl px-3 py-4 text-center">
+            <div className="font-black text-[#0c0f0e] text-base sm:text-xl leading-tight">{num}</div>
+            <div className="text-[11px] sm:text-[13px] text-neutral-500 mt-1 leading-snug">{label}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* ── 5. VALUE STACK ── */
 function ValueStack() {
   const items = [
-    [<Snow/>,   "10× Heavy-Duty 1040ml Borosilicate Containers on Amazon", "Freezer to oven, no cracks, no transfer dish", "$90.00", false],
-    [<Lock/>,   "10× Smart-Lock Airtight Leakproof Lids",                  "Four-clip silicone seal — carry soup sideways", "$30.00", false],
-    [<Book/>,   "BONUS: “The Sunday Prep Formula” Cookbook (PDF)",         "Claimed via email with your Amazon Order ID",   "$27.00", true],
-    [<Shield/>, "BONUS: Upgraded 2-Year Breakage & Lid-Seal Warranty",     "Full breakage & lid-seal protection for 24 months. Claimed with your Order ID.",   "$60.00", true],
+    [<Snow/>,   “10× Heavy-Duty 1040ml Borosilicate Containers”, “Freezer to oven, no cracks, no transfer dish”,              null,         false],
+    [<Lock/>,   “10× Smart-Lock Airtight Leakproof Lids”,        “Four-clip silicone seal — carry soup sideways”,              null,         false],
+    [<Book/>,   “BONUS: “The Sunday Prep Formula” Cookbook (PDF)”, “Claimed via email with your Amazon Order ID”,    “$27 value”,  true],
+    [<Shield/>, “BONUS: Upgraded 2-Year Breakage & Lid-Seal Warranty”,  “Full breakage & lid-seal protection for 24 months. Claimed with your Order ID.”, “$60 value”, true],
   ];
   return (
     <section className="px-5 py-14 sm:py-20 max-w-3xl mx-auto">
       <h2 className="font-black text-center tracking-tight leading-tight text-3xl sm:text-5xl">
         Your <span className="text-[#FF9900]">Amazon-exclusive</span> bundle.
       </h2>
-      <p className="text-center text-neutral-600 mt-3 text-[17px]">Order through Amazon today and the full $207 stack is yours.</p>
+      <p className="text-center text-neutral-600 mt-3 text-[17px]">Order through Amazon today — the containers, the cookbook, and the warranty are all yours.</p>
 
       <div className="mt-9 rounded-2xl border-2 border-neutral-900 overflow-hidden shadow-[0_18px_0_-6px_rgba(12,15,14,.12)]">
         {items.map(([icon, name, desc, val, bonus], i) => (
@@ -205,15 +254,19 @@ function ValueStack() {
               <div className="font-extrabold text-[#0c0f0e] text-[16px] sm:text-lg leading-snug">{name}</div>
               <div className="text-[14px] text-neutral-600 mt-0.5">{desc}</div>
             </div>
-            <div className="flex-none font-bold text-neutral-500 text-sm sm:text-base whitespace-nowrap pt-1">{val}</div>
+            <div className="flex-none text-sm whitespace-nowrap pt-1">
+              {val
+                ? <span className="font-black text-[#FF9900]">{val}</span>
+                : <span className="font-semibold text-emerald-600 text-xs uppercase tracking-wide border border-emerald-300 bg-emerald-50 rounded-full px-2 py-0.5">Included</span>}
+            </div>
           </div>
         ))}
 
         <div className="bg-neutral-900 text-white px-5 sm:px-7 py-6">
           <div className="flex items-end justify-between">
             <div>
-              <div className="text-sm text-neutral-400 line-through font-semibold">Total real value $207.00</div>
-              <div className="text-[#FF9900] font-black text-sm tracking-wider uppercase mt-1">Today's Amazon price</div>
+              <div className="text-[#FF9900] font-black text-sm tracking-wider uppercase">$87 in free bonuses included</div>
+              <div className="text-neutral-400 text-xs mt-0.5">cookbook + 2-year warranty — yours with every order</div>
             </div>
             <div className="font-black text-5xl sm:text-6xl leading-none text-[#FF9900]">$59.99</div>
           </div>
@@ -266,6 +319,9 @@ function Verify() {
       headers: { "Content-Type": "application/json", "Accept": "application/json" },
       body: JSON.stringify({ _subject: `Bonus Claim – Order ${f.order}`, name: f.name, email: f.email, order: f.order }),
     }).catch(() => {});
+    if (typeof emailjs !== "undefined" && EJS_KEY !== "YOUR_EMAILJS_PUBLIC_KEY") {
+      await emailjs.send(EJS_SVC, EJS_TPL_CLAIM, { to_name: f.name, to_email: f.email, order_id: f.order }).catch(() => {});
+    }
     setLoading(false);
     setDone(true);
   };
@@ -364,7 +420,6 @@ function Sticky({ show }) {
                      ${show ? "translate-y-0" : "translate-y-full"}`}>
       <div className="leading-none">
         <span className="font-black text-xl text-[#0c0f0e]">$59.99</span>
-        <span className="text-xs text-neutral-400 line-through ml-1.5 font-semibold">$207</span>
         <span className="hidden xs:block text-[10px] uppercase tracking-widest text-neutral-500 font-bold mt-0.5">On Amazon</span>
       </div>
       <a href={AMAZON} target="_blank" rel="noopener" style={{ backgroundColor: ORANGE }}
@@ -390,6 +445,9 @@ function ExitModal({ open, onClose }) {
       headers: { "Content-Type": "application/json", "Accept": "application/json" },
       body: JSON.stringify({ _subject: "7-Day Blueprint Request", name: f.name, email: f.email, type: "blueprint" }),
     }).catch(() => {});
+    if (typeof emailjs !== "undefined" && EJS_KEY !== "YOUR_EMAILJS_PUBLIC_KEY") {
+      await emailjs.send(EJS_SVC, EJS_TPL_LEAD, { to_name: f.name, to_email: f.email }).catch(() => {});
+    }
     setLoading(false);
     setDone(true);
   };
@@ -474,6 +532,7 @@ function App() {
       <Banner />
       <Hero heroRef={heroRef} />
       <OldVsNew />
+      <ProofSection />
       <ValueStack />
       <Verify />
       <FAQ />
